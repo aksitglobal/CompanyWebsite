@@ -1,0 +1,377 @@
+@extends('layouts.app')
+
+@section('title', 'Services — AKSIT GLOBAL')
+@section('description', 'Professional IT services by AKSIT GLOBAL — cybersecurity solutions, cloud infrastructure, corporate training, web development, digital marketing, and IT consulting.')
+
+@section('content')
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Our <span>Services</span></h1>
+            <p>End-to-end IT solutions designed to protect, grow, and transform your business.</p>
+            <div class="breadcrumb"><a href="{{ route('home') }}">Home</a> <i class="fas fa-chevron-right"></i> <span>Services</span></div>
+        </div>
+    </section>
+
+    <!-- SERVICES INTRO -->
+    <section class="services-intro">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>What We Offer</h2>
+                <p>Comprehensive technology solutions tailored to meet the unique needs of individuals and businesses</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILED SERVICES -->
+    <section class="services-detailed">
+        <div class="container">
+
+            <!-- Service 1 -->
+            <div class="service-detail-row reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap"><i class="fas fa-lock"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Cybersecurity Solutions</h3>
+                    <p>In today's threat landscape, security isn't optional — it's essential. AKSIT GLOBAL provides comprehensive cybersecurity services to protect your digital assets and ensure business continuity.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Vulnerability Assessment & Penetration Testing (VAPT)</li>
+                        <li><i class="fas fa-check"></i> Security Operations Center (SOC) Setup</li>
+                        <li><i class="fas fa-check"></i> Incident Response & Digital Forensics</li>
+                        <li><i class="fas fa-check"></i> Security Awareness Training for Staff</li>
+                        <li><i class="fas fa-check"></i> Compliance & Risk Assessment (ISO 27001, PCI DSS)</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Cybersecurity Solutions"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-detail-row reverse reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap cloud"><i class="fas fa-cloud-arrow-up"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Cloud Infrastructure & Migration</h3>
+                    <p>Move to the cloud with confidence. Our certified cloud architects design, deploy, and manage scalable cloud solutions across AWS, Microsoft Azure, and Google Cloud Platform.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Cloud Architecture Design & Planning</li>
+                        <li><i class="fas fa-check"></i> Cloud Migration (On-premise to Cloud)</li>
+                        <li><i class="fas fa-check"></i> Hybrid & Multi-Cloud Deployments</li>
+                        <li><i class="fas fa-check"></i> Cloud Security & Monitoring</li>
+                        <li><i class="fas fa-check"></i> Cost Optimization & Performance Tuning</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Cloud Infrastructure & Migration"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-detail-row reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap training"><i class="fas fa-building"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Corporate IT Training</h3>
+                    <p>Upskill your workforce with customized IT training programs. We work closely with HR departments and technical teams to design capacity-building programs that deliver measurable results.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Customized Curriculum for Your Industry</li>
+                        <li><i class="fas fa-check"></i> Online & On-site Training Options</li>
+                        <li><i class="fas fa-check"></i> Post-training Assessment & Certification</li>
+                        <li><i class="fas fa-check"></i> Team-based Workshops & Hands-on Labs</li>
+                        <li><i class="fas fa-check"></i> Continuing Education Credits</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Corporate IT Training"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-detail-row reverse reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap web"><i class="fas fa-laptop-code"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Web & Application Development</h3>
+                    <p>From stunning websites to complex web applications, our development team builds digital products that drive results. We deliver modern, responsive, and SEO-optimized solutions.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Custom Website Design & Development</li>
+                        <li><i class="fas fa-check"></i> E-commerce Solutions</li>
+                        <li><i class="fas fa-check"></i> Mobile App Development (iOS & Android)</li>
+                        <li><i class="fas fa-check"></i> API Development & Integration</li>
+                        <li><i class="fas fa-check"></i> UI/UX Design & Prototyping</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Web & Application Development"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-detail-row reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap marketing"><i class="fas fa-bullhorn"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Digital Marketing</h3>
+                    <p>Grow your online presence and attract more customers. Our marketing experts craft data-driven strategies that deliver measurable growth through organic and paid channels.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Search Engine Optimization (SEO)</li>
+                        <li><i class="fas fa-check"></i> Social Media Management & Advertising</li>
+                        <li><i class="fas fa-check"></i> Google Ads & PPC Campaign Management</li>
+                        <li><i class="fas fa-check"></i> Content Marketing & Copywriting</li>
+                        <li><i class="fas fa-check"></i> Analytics, Reporting & ROI Tracking</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Digital Marketing"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-detail-row reverse reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap consulting"><i class="fas fa-diagram-project"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>IT Consulting & Network Solutions</h3>
+                    <p>Leverage our expertise to make smarter technology decisions. Our consultants help you optimize infrastructure, streamline operations, and align IT strategy with business objectives.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> IT Infrastructure Assessment & Planning</li>
+                        <li><i class="fas fa-check"></i> Network Design, Setup & Optimization</li>
+                        <li><i class="fas fa-check"></i> Structured Cabling & Data Center Solutions</li>
+                        <li><i class="fas fa-check"></i> Technology Stack Selection & Integration</li>
+                        <li><i class="fas fa-check"></i> Managed IT Support & Maintenance</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="IT Consulting & Network Solutions"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Need a Custom IT Solution?</h2>
+                <p>Every business is unique. Let's discuss how AKSIT GLOBAL can design a solution tailored to your specific requirements.</p>
+                <div class="cta-buttons">
+                    <a href="{{ route('contact') }}" class="btn btn-gold">Request a Proposal</a>
+                    <a href="https://wa.me/923000311868" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE CONTACT MODAL -->
+    <div class="service-modal-overlay" id="serviceModalOverlay">
+        <div class="service-modal" id="serviceModal">
+            <button class="service-modal-close" id="serviceModalClose" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="service-modal-header">
+                <div class="service-modal-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Get in Touch</h3>
+                <p>Share your requirements and we'll get back to you within 24 hours.</p>
+            </div>
+            <form id="serviceContactForm" class="service-modal-form" method="POST" action="{{ route('service.inquiry') }}">
+                @csrf
+                <div class="modal-form-row">
+                    <div class="modal-form-group">
+                        <label for="modalFullName"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="modalFullName" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="modalEmail"><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" id="modalEmail" name="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                <div class="modal-form-row">
+                    <div class="modal-form-group">
+                        <label for="modalPhone"><i class="fas fa-phone-alt"></i> Phone Number</label>
+                        <input type="tel" id="modalPhone" name="phone" placeholder="e.g. +92-300-1234567">
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="modalService"><i class="fas fa-concierge-bell"></i> Selected Service</label>
+                        <input type="text" id="modalService" name="service" readonly>
+                    </div>
+                </div>
+                <div class="modal-form-group">
+                    <label for="modalMessage"><i class="fas fa-comment-dots"></i> Message / Description</label>
+                    <textarea id="modalMessage" name="message" rows="4" placeholder="Tell us about your requirements..." required></textarea>
+                </div>
+                <div class="modal-form-actions">
+                    <button type="submit" class="btn btn-primary modal-submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <button type="button" class="btn modal-whatsapp-btn" id="modalWhatsAppBtn">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
+
+@push('scripts')
+<script>
+(function() {
+    // ===== MODAL ELEMENTS =====
+    var overlay = document.getElementById('serviceModalOverlay');
+    var modal = document.getElementById('serviceModal');
+    var closeBtn = document.getElementById('serviceModalClose');
+    var form = document.getElementById('serviceContactForm');
+    var waBtn = document.getElementById('modalWhatsAppBtn');
+
+    // ===== OPEN MODAL =====
+    function openModal(serviceName) {
+        if (!overlay) return;
+        var serviceInput = document.getElementById('modalService');
+        if (serviceInput) serviceInput.value = serviceName || '';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() {
+            var nameInput = document.getElementById('modalFullName');
+            if (nameInput) nameInput.focus();
+        }, 400);
+    }
+
+    // ===== CLOSE MODAL =====
+    function closeModal() {
+        if (!overlay) return;
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // ===== ATTACH CLICK HANDLERS TO ALL BUTTONS =====
+    var buttons = document.querySelectorAll('.btn-get-in-touch');
+    for (var i = 0; i < buttons.length; i++) {
+        (function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var serviceName = btn.getAttribute('data-service') || '';
+                openModal(serviceName);
+            });
+        })(buttons[i]);
+    }
+
+    // ===== CLOSE BUTTON =====
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
+        });
+    }
+
+    // ===== CLICK OUTSIDE MODAL TO CLOSE =====
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeModal();
+        });
+    }
+
+    // ===== ESCAPE KEY TO CLOSE =====
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay && overlay.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // ===== GET FORM DATA =====
+    function getFormData() {
+        return {
+            name: (document.getElementById('modalFullName') || {}).value || '',
+            email: (document.getElementById('modalEmail') || {}).value || '',
+            phone: (document.getElementById('modalPhone') || {}).value || '',
+            service: (document.getElementById('modalService') || {}).value || '',
+            message: (document.getElementById('modalMessage') || {}).value || ''
+        };
+    }
+
+    // ===== BUILD WHATSAPP URL =====
+    function buildWAUrl(data) {
+        var msg = 'Hello AKSIT GLOBAL!%0A%0A';
+        msg += '*Name:* ' + encodeURIComponent(data.name.trim()) + '%0A';
+        msg += '*Email:* ' + encodeURIComponent(data.email.trim()) + '%0A';
+        if (data.phone.trim()) msg += '*Phone:* ' + encodeURIComponent(data.phone.trim()) + '%0A';
+        if (data.service.trim()) msg += '*Service:* ' + encodeURIComponent(data.service.trim()) + '%0A';
+        if (data.message.trim()) msg += '*Message:* ' + encodeURIComponent(data.message.trim()) + '%0A';
+        return 'https://wa.me/923000311868?text=' + msg;
+    }
+
+    // ===== WHATSAPP BUTTON =====
+    if (waBtn) {
+        waBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var data = getFormData();
+            if (!data.name.trim() || !data.email.trim()) {
+                alert('Please fill in at least your name and email.');
+                return;
+            }
+            window.open(buildWAUrl(data), '_blank');
+            var origHTML = waBtn.innerHTML;
+            waBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+            setTimeout(function() {
+                waBtn.innerHTML = origHTML;
+                if (form) form.reset();
+                closeModal();
+            }, 2000);
+        });
+    }
+
+    // ===== FORM SUBMIT (Laravel backend + WhatsApp) =====
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var data = getFormData();
+            if (!data.name.trim() || !data.email.trim() || !data.message.trim()) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Submit to Laravel backend via AJAX
+            var formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            }).then(function(response) {
+                return response.json();
+            }).then(function(result) {
+                // Also open WhatsApp
+                window.open(buildWAUrl(data), '_blank');
+                var submitBtn = form.querySelector('.modal-submit-btn');
+                if (submitBtn) {
+                    var origHTML = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent!';
+                    submitBtn.style.background = '#25d366';
+                    setTimeout(function() {
+                        submitBtn.innerHTML = origHTML;
+                        submitBtn.style.background = '';
+                        form.reset();
+                        closeModal();
+                    }, 2500);
+                }
+            }).catch(function(err) {
+                // Fallback: open WhatsApp anyway
+                window.open(buildWAUrl(data), '_blank');
+                var submitBtn = form.querySelector('.modal-submit-btn');
+                if (submitBtn) {
+                    var origHTML = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Sent via WhatsApp!';
+                    submitBtn.style.background = '#25d366';
+                    setTimeout(function() {
+                        submitBtn.innerHTML = origHTML;
+                        submitBtn.style.background = '';
+                        form.reset();
+                        closeModal();
+                    }, 2500);
+                }
+            });
+        });
+    }
+})();
+</script>
+@endpush
