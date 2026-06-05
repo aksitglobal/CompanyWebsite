@@ -30,4 +30,10 @@ class PageController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function career(Request $request)
+    {
+        $type = $request->query('type', 'internship');
+        return view('pages.career', compact('type'));
+    }
 }

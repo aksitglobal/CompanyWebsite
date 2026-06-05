@@ -32,7 +32,7 @@
                     <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
                     <h4>Email Us</h4>
                     <p><a href="mailto:contact@aksitglobal.com">contact@aksitglobal.com</a></p>
-                    <p style="margin-top: 8px;"><a href="https://www.aksitglobal.com" target="_blank">www.aksitglobal.com</a></p>
+
                 </div>
                 <div class="contact-info-card reveal">
                     <div class="contact-card-icon"><i class="fas fa-clock"></i></div>

@@ -43,10 +43,7 @@
                     <i class="fas fa-envelope"></i>
                     <a href="mailto:contact@aksitglobal.com">contact@aksitglobal.com</a>
                 </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-globe"></i>
-                    <a href="https://www.aksitglobal.com" target="_blank">www.aksitglobal.com</a>
-                </div>
+
             </div>
         </div>
     </div>

@@ -11,6 +11,13 @@
             <span></span><span></span><span></span>
         </div>
         <div class="hero-content">
+            @if(isset($activeNews) && $activeNews->count() > 0)
+            <marquee behavior="scroll" direction="left" style="color: white; background: rgba(0,0,0,0.4); padding: 8px 15px; margin-bottom: 15px; border-radius: 20px; font-size: 15px; font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto; backdrop-filter: blur(5px);">
+                @foreach($activeNews as $news)
+                    {{ $news->news_text }} @if(!$loop->last) &nbsp;&nbsp;⭐&nbsp;&nbsp; @endif
+                @endforeach
+            </marquee>
+            @endif
             <div class="hero-badge">🌐 Trusted IT Partner Since Day One</div>
             <h1>Empowering Your Business with <span>Global IT Solutions</span></h1>
             <p>AKSIT GLOBAL delivers cutting-edge cybersecurity, cloud computing, networking, digital marketing, and professional IT training — helping individuals and organizations thrive in the digital era.</p>
@@ -185,4 +192,7 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== JOBS SECTION ===== -->
+    <section id="jobs"></section>
 @endsection

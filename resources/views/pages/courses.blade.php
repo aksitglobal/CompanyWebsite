@@ -5,6 +5,76 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/courses-modal.css') }}">
+<style>
+    /* === COURSE LEVEL SIGNAL BARS === */
+    .level-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        font-size: 0.82rem;
+        padding: 3px 10px 3px 8px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+    .level-indicator:hover {
+        transform: scale(1.05);
+    }
+    .level-bars {
+        display: inline-flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 14px;
+    }
+    .level-bars span {
+        display: inline-block;
+        width: 3.5px;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .level-indicator:hover .level-bars span {
+        transform: scaleY(1.15);
+    }
+
+    /* Beginner — 2 bars, red */
+    .level-beginner { color: #ef4444; background: rgba(239,68,68,0.1); }
+    .level-beginner .level-bars span:nth-child(1) { height: 6px; background: #ef4444; }
+    .level-beginner .level-bars span:nth-child(2) { height: 11px; background: #ef4444; }
+
+    /* Beginner-Intermediate — 3 bars, orange */
+    .level-beg-int { color: #f59e0b; background: rgba(245,158,11,0.1); }
+    .level-beg-int .level-bars span:nth-child(1) { height: 5px; background: #f59e0b; }
+    .level-beg-int .level-bars span:nth-child(2) { height: 9px; background: #f59e0b; }
+    .level-beg-int .level-bars span:nth-child(3) { height: 13px; background: #f59e0b; }
+
+    /* Intermediate — 3 bars, blue */
+    .level-intermediate { color: #3b82f6; background: rgba(59,130,246,0.1); }
+    .level-intermediate .level-bars span:nth-child(1) { height: 5px; background: #3b82f6; }
+    .level-intermediate .level-bars span:nth-child(2) { height: 9px; background: #3b82f6; }
+    .level-intermediate .level-bars span:nth-child(3) { height: 13px; background: #3b82f6; }
+
+    /* Advanced — 4 bars, purple */
+    .level-advanced { color: #8b5cf6; background: rgba(139,92,246,0.1); }
+    .level-advanced .level-bars span:nth-child(1) { height: 4px; background: #8b5cf6; }
+    .level-advanced .level-bars span:nth-child(2) { height: 7px; background: #8b5cf6; }
+    .level-advanced .level-bars span:nth-child(3) { height: 10px; background: #8b5cf6; }
+    .level-advanced .level-bars span:nth-child(4) { height: 14px; background: #8b5cf6; }
+
+    /* Beginner-Advanced — 4 bars, purple */
+    .level-beg-adv { color: #8b5cf6; background: rgba(139,92,246,0.1); }
+    .level-beg-adv .level-bars span:nth-child(1) { height: 4px; background: #8b5cf6; }
+    .level-beg-adv .level-bars span:nth-child(2) { height: 7px; background: #8b5cf6; }
+    .level-beg-adv .level-bars span:nth-child(3) { height: 10px; background: #8b5cf6; }
+    .level-beg-adv .level-bars span:nth-child(4) { height: 14px; background: #8b5cf6; }
+
+    /* Expert — 5 bars, green */
+    .level-expert { color: #22c55e; background: rgba(34,197,94,0.1); }
+    .level-expert .level-bars span:nth-child(1) { height: 3px; background: #22c55e; }
+    .level-expert .level-bars span:nth-child(2) { height: 6px; background: #22c55e; }
+    .level-expert .level-bars span:nth-child(3) { height: 9px; background: #22c55e; }
+    .level-expert .level-bars span:nth-child(4) { height: 12px; background: #22c55e; }
+    .level-expert .level-bars span:nth-child(5) { height: 14px; background: #22c55e; }
+</style>
 @endpush
 
 @section('content')
@@ -63,7 +133,7 @@
                     <div class="course-card-body">
                         <h3>CCNA — Cisco Certified Network Associate</h3>
                         <p>Master the fundamentals of networking — routing, switching, IP addressing, and network security. The gateway to your Cisco career path.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 8-12 Weeks</span><span><i class="fas fa-signal"></i> Beginner</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 8-12 Weeks</span><span class="level-indicator level-beginner"><span class="level-bars"><span></span><span></span></span> Beginner</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -75,7 +145,7 @@
                     <div class="course-card-body">
                         <h3>CCNP — Cisco Certified Network Professional</h3>
                         <p>Advance your networking expertise with deep dives into enterprise routing, switching, wireless, and security.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 12-16 Weeks</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 12-16 Weeks</span><span class="level-indicator level-intermediate"><span class="level-bars"><span></span><span></span><span></span></span> Intermediate</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -87,7 +157,7 @@
                     <div class="course-card-body">
                         <h3>CCIE — Cisco Certified Internetwork Expert</h3>
                         <p>The gold standard of networking certifications. Master expert-level routing, switching, and troubleshooting.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 16-24 Weeks</span><span><i class="fas fa-signal"></i> Expert</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 16-24 Weeks</span><span class="level-indicator level-expert"><span class="level-bars"><span></span><span></span><span></span><span></span><span></span></span> Expert</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -106,7 +176,7 @@
                     <div class="course-card-body">
                         <h3>Certified Ethical Hacker (CEH)</h3>
                         <p>Learn to think like a hacker to defend against cyber threats. Master penetration testing and vulnerability assessment.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 10-14 Weeks</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 10-14 Weeks</span><span class="level-indicator level-intermediate"><span class="level-bars"><span></span><span></span><span></span></span> Intermediate</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -118,7 +188,7 @@
                     <div class="course-card-body">
                         <h3>CISSP — Certified Information Systems Security</h3>
                         <p>The world's premier cybersecurity certification. Master security architecture, risk management, and cryptography.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 12-16 Weeks</span><span><i class="fas fa-signal"></i> Advanced</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 12-16 Weeks</span><span class="level-indicator level-advanced"><span class="level-bars"><span></span><span></span><span></span><span></span></span> Advanced</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -130,7 +200,7 @@
                     <div class="course-card-body">
                         <h3>Palo Alto / Fortinet Firewall</h3>
                         <p>Master next-generation firewall configuration, threat prevention, VPN setup, and advanced security policies.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 6-8 Weeks</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 6-8 Weeks</span><span class="level-indicator level-intermediate"><span class="level-bars"><span></span><span></span><span></span></span> Intermediate</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -173,7 +243,7 @@
                     <div class="course-card-body">
                         <h3>DevOps Engineering</h3>
                         <p>Learn CI/CD pipelines, Docker, Kubernetes, Jenkins, Terraform, and Ansible. Bridge development and operations.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 10-14 Weeks</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 10-14 Weeks</span><span class="level-indicator level-intermediate"><span class="level-bars"><span></span><span></span><span></span></span> Intermediate</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -204,7 +274,7 @@
                     <div class="course-card-body">
                         <h3>SEO &amp; Digital Marketing</h3>
                         <p>Master SEO, Google Ads, social media marketing, content strategy, email marketing, and analytics.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 8-12 Weeks</span><span><i class="fas fa-signal"></i> Beginner</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 8-12 Weeks</span><span class="level-indicator level-beginner"><span class="level-bars"><span></span><span></span></span> Beginner</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -216,7 +286,7 @@
                     <div class="course-card-body">
                         <h3>Graphic Design</h3>
                         <p>Learn Adobe Photoshop, Illustrator, and industry-standard design tools. Create logos, branding, and professional layouts.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 6-10 Weeks</span><span><i class="fas fa-signal"></i> Beginner</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 6-10 Weeks</span><span class="level-indicator level-beginner"><span class="level-bars"><span></span><span></span></span> Beginner</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -247,7 +317,7 @@
                     <div class="course-card-body">
                         <h3>Advanced Python Programming</h3>
                         <p>Go beyond the basics — data structures, OOP, web scraping, API development, automation, and AI/ML intro.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 8-12 Weeks</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 8-12 Weeks</span><span class="level-indicator level-intermediate"><span class="level-bars"><span></span><span></span><span></span></span> Intermediate</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>
@@ -259,7 +329,7 @@
                     <div class="course-card-body">
                         <h3>Mobile App Development</h3>
                         <p>Build cross-platform mobile apps using React Native or Flutter. Learn UI/UX, API integration, and publishing.</p>
-                        <div class="course-meta"><span><i class="fas fa-clock"></i> 12-16 Weeks</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+                        <div class="course-meta"><span><i class="fas fa-clock"></i> 12-16 Weeks</span><span class="level-indicator level-intermediate"><span class="level-bars"><span></span><span></span><span></span></span> Intermediate</span></div>
                         <div class="course-btn-group">
                             <button class="btn btn-primary btn-enroll" onclick="openEnrollModal(this)">Enroll Now</button>
                             <button class="btn-details" onclick="openDetailsModal(this)"><i class="fas fa-info-circle"></i> Details</button>

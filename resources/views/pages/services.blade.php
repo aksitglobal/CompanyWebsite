@@ -141,6 +141,90 @@
                 </div>
             </div>
 
+            <!-- Service 7: Managed IT Services -->
+            <div class="service-detail-row reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);"><i class="fas fa-server"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Managed IT Services</h3>
+                    <p>End‑to‑end management of your IT systems so you can focus on your core business. From infrastructure monitoring to 24/7 helpdesk support, we keep your technology running at peak performance.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> IT Infrastructure Management</li>
+                        <li><i class="fas fa-check"></i> Help Desk & IT Support</li>
+                        <li><i class="fas fa-check"></i> Backup & Disaster Recovery</li>
+                        <li><i class="fas fa-check"></i> Network & Security Management</li>
+                        <li><i class="fas fa-check"></i> IT Consultancy & Strategy</li>
+                        <li><i class="fas fa-check"></i> User & Access Management</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Managed IT Services"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 8: Business Software & System Integration -->
+            <div class="service-detail-row reverse reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);"><i class="fas fa-cubes"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Business Software & System Integration</h3>
+                    <p>Streamline your operations with tailored business software solutions. We design, develop, and integrate enterprise systems that unify your workflows and drive productivity.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> ERP Systems</li>
+                        <li><i class="fas fa-check"></i> CRM Systems</li>
+                        <li><i class="fas fa-check"></i> LMS Platforms</li>
+                        <li><i class="fas fa-check"></i> CMS & DMS</li>
+                        <li><i class="fas fa-check"></i> System Integration</li>
+                        <li><i class="fas fa-check"></i> Automation Workflows</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Business Software & System Integration"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 9: Network Infrastructure Design -->
+            <div class="service-detail-row reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap" style="background: linear-gradient(135deg, #059669, #047857);"><i class="fas fa-network-wired"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Network Infrastructure Design</h3>
+                    <p>Planning, architecture, and implementation of secure, scalable, and high‑performance network environments tailored to support your organization's operational and business needs.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Network Planning & Assessment</li>
+                        <li><i class="fas fa-check"></i> Network Architecture Design</li>
+                        <li><i class="fas fa-check"></i> Structured Cabling</li>
+                        <li><i class="fas fa-check"></i> Wireless Network Design (WiFi)</li>
+                        <li><i class="fas fa-check"></i> Network Security Architecture</li>
+                        <li><i class="fas fa-check"></i> Hardware & Technology Selection</li>
+                        <li><i class="fas fa-check"></i> Monitoring & Performance Design</li>
+                        <li><i class="fas fa-check"></i> Documentation & Roadmap</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Network Infrastructure Design"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
+            <!-- Service 10: Social Media Management -->
+            <div class="service-detail-row reverse reveal">
+                <div class="service-detail-icon">
+                    <div class="sd-icon-wrap" style="background: linear-gradient(135deg, #e11d48, #be123c);"><i class="fas fa-share-nodes"></i></div>
+                </div>
+                <div class="service-detail-content">
+                    <h3>Social Media Management</h3>
+                    <p>Strategic planning, creation, execution, and optimization of content across digital platforms to enhance brand visibility, engage audiences, and drive measurable business results.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Strategy & Planning</li>
+                        <li><i class="fas fa-check"></i> Content Creation & Design</li>
+                        <li><i class="fas fa-check"></i> Scheduling & Publishing</li>
+                        <li><i class="fas fa-check"></i> Community Management</li>
+                        <li><i class="fas fa-check"></i> Analytics & Performance</li>
+                        <li><i class="fas fa-check"></i> Paid Advertising</li>
+                        <li><i class="fas fa-check"></i> Brand Development</li>
+                        <li><i class="fas fa-check"></i> Campaign Management</li>
+                    </ul>
+                    <button class="btn btn-primary btn-get-in-touch" data-service="Social Media Management"><i class="fas fa-envelope"></i> Get in Touch</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
