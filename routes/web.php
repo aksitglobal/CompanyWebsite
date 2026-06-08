@@ -23,6 +23,7 @@ Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->nam
 Route::get('/blog/{blog}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 Route::get('/career', [JobListingController::class, 'index'])->name('career');
 Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/it-solutions', [PageController::class, 'itSolutions'])->name('it-solutions');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // Form Submission Routes

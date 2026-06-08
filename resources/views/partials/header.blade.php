@@ -8,6 +8,7 @@
             <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
             <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a>
             <a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'active' : '' }}">Services</a>
+            <a href="{{ route('it-solutions') }}" class="{{ request()->routeIs('it-solutions') ? 'active' : '' }}">IT Solutions</a>
             <style>
                 .nav-dropdown { position: relative; display: inline-block; }
                 .nav-dropdown-content { display: none; position: absolute; background-color: #1a1a1a; min-width: 160px; box-shadow: 0px 8px 16px rgba(0,0,0,0.5); z-index: 1000; border-radius: 6px; top: 100%; left: 0; overflow: hidden; border: 1px solid #333; }

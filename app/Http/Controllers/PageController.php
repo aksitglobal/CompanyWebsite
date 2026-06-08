@@ -26,6 +26,11 @@ class PageController extends Controller
         return view('pages.services');
     }
 
+    public function itSolutions()
+    {
+        return view('pages.it-solutions');
+    }
+
     public function contact()
     {
         return view('pages.contact');
