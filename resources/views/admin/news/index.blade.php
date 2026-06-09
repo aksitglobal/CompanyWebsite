@@ -9,6 +9,8 @@
             <a href="{{ route('admin.blogs.index') }}" class="btn btn-secondary me-2 text-white">Manage Blogs</a>
             <a href="{{ route('admin.jobs.index') }}" class="btn btn-warning me-2 text-dark">Manage Jobs</a>
             <a href="{{ route('admin.applications.index') }}" class="btn btn-info me-2 text-white">View Applications</a>
+            <a href="{{ route('admin.whatsapp-queries.index') }}" class="btn btn-success me-2 text-white">WhatsApp Queries</a>
+            <a href="{{ route('admin.meeting-bookings.index') }}" class="btn btn-dark me-2 text-white">Meeting Bookings</a>
             <a href="{{ route('admin.news.create') }}" class="btn btn-primary me-3">Add New News</a>
 
             <form action="{{ route('admin.logout') }}" method="POST" class="m-0">

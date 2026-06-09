@@ -6,6 +6,8 @@ use App\Http\Controllers\JobListingController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\WhatsappQueryController;
+use App\Http\Controllers\MeetingBookingController;
 use App\Http\Controllers\Admin\ApplicationController as AdminApplicationController;
 use App\Http\Controllers\Admin\JobListingController as AdminJobListingController;
 
@@ -30,6 +32,12 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [FormController::class, 'submitContact'])->name('contact.submit');
 Route::post('/enrollment', [FormController::class, 'submitEnrollment'])->name('enrollment.submit');
 Route::post('/service-inquiry', [FormController::class, 'submitServiceInquiry'])->name('service.inquiry');
+
+// WhatsApp Query Route
+Route::post('/whatsapp-query', [WhatsappQueryController::class, 'store'])->name('whatsapp-query.store');
+
+// Meeting Booking Route
+Route::post('/meeting-booking', [MeetingBookingController::class, 'store'])->name('meeting-booking.store');
 
 // Job Application Routes
 Route::get('/apply', [ApplicationController::class, 'create'])->name('apply.create');
@@ -89,6 +97,18 @@ Route::prefix('aksit-secure-2026')->group(function () {
             Route::put('/{blog}', [\App\Http\Controllers\Admin\BlogController::class, 'update'])->name('update');
             Route::delete('/{blog}', [\App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('destroy');
             Route::post('/{blog}/toggle', [\App\Http\Controllers\Admin\BlogController::class, 'togglePublish'])->name('toggle');
+        });
+
+        // Admin WhatsApp Queries Panel
+        Route::prefix('whatsapp-queries')->name('admin.whatsapp-queries.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Admin\WhatsappQueryController::class, 'index'])->name('index');
+            Route::delete('/{id}', [\App\Http\Controllers\Admin\WhatsappQueryController::class, 'destroy'])->name('destroy');
+        });
+
+        // Admin Meeting Bookings Panel
+        Route::prefix('meeting-bookings')->name('admin.meeting-bookings.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Admin\MeetingBookingController::class, 'index'])->name('index');
+            Route::delete('/{id}', [\App\Http\Controllers\Admin\MeetingBookingController::class, 'destroy'])->name('destroy');
         });
         
     });

@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
     });
 
-    // Form submission → WhatsApp
+    // Form submission → Save to DB then WhatsApp
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -595,8 +595,37 @@ document.addEventListener('DOMContentLoaded', function () {
             `Project Type: ${type}\n` +
             `Description: ${description}`;
 
-        const whatsappUrl = `https://wa.me/923003118680?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
+        const whatsappUrl = `https://wa.me/923000311868?text=${encodeURIComponent(message)}`;
+
+        // Save to database via AJAX first, then open WhatsApp
+        fetch('{{ route("whatsapp-query.store") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                phone: phone,
+                project_type: type,
+                description: description
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            window.open(whatsappUrl, '_blank');
+            form.reset();
+            closeModal();
+        })
+        .catch(error => {
+            console.error('Error saving query:', error);
+            // Still open WhatsApp even if save fails
+            window.open(whatsappUrl, '_blank');
+            form.reset();
+            closeModal();
+        });
     });
 });
 </script>
