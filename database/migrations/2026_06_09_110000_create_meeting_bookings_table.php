@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('meeting_bookings', function (Blueprint $table) {
@@ -18,13 +15,12 @@ return new class extends Migration
             $table->string('phone');
             $table->string('company_name')->nullable();
             $table->text('description');
+            $table->date('meeting_date')->nullable();
+            $table->enum('status', ['pending', 'confirmed'])->default('pending');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('meeting_bookings');

@@ -12,5 +12,10 @@ class WhatsappQuery extends Model
         'phone',
         'project_type',
         'description',
+        'is_read',
+    ];
+
+    protected $casts = [
+        'is_read' => 'boolean',
     ];
 }

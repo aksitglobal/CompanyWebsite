@@ -4,19 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MeetingBooking extends Model
+class ContactMessage extends Model
 {
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
         'phone',
-        'company_name',
-        'description',
-        'meeting_date',
-        'status',
+        'subject',
+        'message',
+        'is_read',
     ];
 
     protected $casts = [
-        'meeting_date' => 'date',
+        'is_read' => 'boolean',
     ];
 }

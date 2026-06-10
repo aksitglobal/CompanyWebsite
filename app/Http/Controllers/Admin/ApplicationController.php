@@ -11,8 +11,14 @@ class ApplicationController extends Controller
 {
     public function index()
     {
-        $applications = Application::orderBy('created_at', 'desc')->get();
+        $applications = Application::orderByRaw('is_read ASC')->orderBy('created_at', 'desc')->get();
         return view('admin.applications.index', compact('applications'));
+    }
+
+    public function markRead($id)
+    {
+        Application::findOrFail($id)->update(['is_read' => true]);
+        return redirect()->back()->with('success', 'Application marked as read.');
     }
 
     public function destroy($id)

@@ -12,18 +12,19 @@
         </div>
         <div class="hero-content">
             @if(isset($activeNews) && $activeNews->count() > 0)
-            <marquee behavior="scroll" direction="left" style="color: white; background: rgba(0,0,0,0.4); padding: 8px 15px; margin-bottom: 15px; border-radius: 20px; font-size: 15px; font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto; backdrop-filter: blur(5px);">
-                @foreach($activeNews as $news)
-                    {{ $news->news_text }} @if(!$loop->last) &nbsp;&nbsp;⭐&nbsp;&nbsp; @endif
-                @endforeach
-            </marquee>
+                <marquee behavior="scroll" direction="left"
+                    style="color: white; background: rgba(0,0,0,0.4); padding: 8px 15px; margin-bottom: 15px; border-radius: 20px; font-size: 15px; font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto; backdrop-filter: blur(5px);">
+                    @foreach($activeNews as $news)
+                        {{ $news->news_text }} @if(!$loop->last) &nbsp;&nbsp;⭐&nbsp;&nbsp; @endif
+                    @endforeach
+                </marquee>
             @endif
             <div class="hero-badge">🌐 Trusted IT Partner Since Day One</div>
             <h1>Empowering Your Business with <span>Global IT Solutions</span></h1>
-            <p>AKSIT GLOBAL delivers cutting-edge cybersecurity, cloud computing, networking, digital marketing, and professional IT training — helping individuals and organizations thrive in the digital era.</p>
+            <p>AKSIT GLOBAL delivers cutting-edge cybersecurity, cloud computing, networking, digital marketing, and
+                professional IT training — helping individuals and organizations thrive in the digital era.</p>
             <div class="hero-buttons">
                 <a href="{{ route('courses') }}" class="btn btn-gold">Explore Courses</a>
-                <a href="{{ route('contact') }}" class="btn btn-outline">Get in Touch</a>
             </div>
         </div>
     </section>
@@ -36,25 +37,29 @@
                     <div class="highlight-icon"><i class="fas fa-shield-halved"></i></div>
                     <h3>Cyber Security</h3>
                     <p>Protect your digital assets with our industry-leading cybersecurity training and solutions.</p>
-                    <a href="{{ route('services') }}" class="highlight-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('services') }}" class="highlight-link">Learn More <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="highlight-card reveal">
                     <div class="highlight-icon"><i class="fas fa-cloud"></i></div>
                     <h3>Cloud Computing</h3>
                     <p>Master AWS, Azure, and Google Cloud with hands-on training from certified professionals.</p>
-                    <a href="{{ route('courses') }}" class="highlight-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('courses') }}" class="highlight-link">Learn More <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="highlight-card reveal">
                     <div class="highlight-icon"><i class="fas fa-network-wired"></i></div>
                     <h3>Networking</h3>
                     <p>Cisco, Huawei & Juniper certifications — CCNA, CCNP, CCIE and more from expert trainers.</p>
-                    <a href="{{ route('courses') }}" class="highlight-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('courses') }}" class="highlight-link">Learn More <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="highlight-card reveal">
                     <div class="highlight-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3>Digital Marketing</h3>
                     <p>Grow your online presence with SEO, social media marketing, and paid advertising strategies.</p>
-                    <a href="{{ route('services') }}" class="highlight-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('services') }}" class="highlight-link">Learn More <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -73,8 +78,11 @@
                 </div>
                 <div class="about-text reveal">
                     <h2>Welcome to <span>AKSIT GLOBAL</span></h2>
-                    <p>We are a leading IT training institute and technology solutions provider based in Rawalpindi, Pakistan. Our team of certified industry experts delivers world-class training in Cisco, Microsoft, Red Hat, AWS, and more.</p>
-                    <p>Whether you're an individual looking to upskill, or a corporation seeking tailored training programs, AKSIT GLOBAL is your trusted partner for technology excellence and professional growth.</p>
+                    <p>We are a leading IT training institute and technology solutions provider based in Rawalpindi,
+                        Pakistan. Our team of certified industry experts delivers world-class training in Cisco, Microsoft,
+                        Red Hat, AWS, and more.</p>
+                    <p>Whether you're an individual looking to upskill, or a corporation seeking tailored training programs,
+                        AKSIT GLOBAL is your trusted partner for technology excellence and professional growth.</p>
                     <div class="about-stats">
                         <div class="about-stat">
                             <span class="number">500+</span>
@@ -109,7 +117,8 @@
                     </div>
                     <div class="course-card-body">
                         <h3>Cyber Security & Ethical Hacking</h3>
-                        <p>Master penetration testing, vulnerability assessment, and security frameworks with real-world labs.</p>
+                        <p>Master penetration testing, vulnerability assessment, and security frameworks with real-world
+                            labs.</p>
                         <a href="{{ route('courses') }}" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
@@ -129,13 +138,15 @@
                     </div>
                     <div class="course-card-body">
                         <h3>CCNA / CCNP / CCIE</h3>
-                        <p>Official Cisco training from associate to expert level — routing, switching, security, and data center.</p>
+                        <p>Official Cisco training from associate to expert level — routing, switching, security, and data
+                            center.</p>
                         <a href="{{ route('courses') }}" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <a href="{{ route('courses') }}" class="btn btn-gold">View All Courses <i class="fas fa-arrow-right"></i></a>
+                <a href="{{ route('courses') }}" class="btn btn-gold">View All Courses <i
+                        class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -145,10 +156,10 @@
         <div class="container">
             <div class="cta-content reveal">
                 <h2>Ready to Launch Your IT Career?</h2>
-                <p>Join hundreds of professionals who have transformed their careers with AKSIT GLOBAL's industry-recognized training programs.</p>
+                <p>Join hundreds of professionals who have transformed their careers with AKSIT GLOBAL's industry-recognized
+                    training programs.</p>
                 <div class="cta-buttons">
                     <a href="{{ route('courses') }}" class="btn btn-gold">Enroll Now</a>
-                    <a href="{{ route('contact') }}" class="btn btn-outline">Get a Free Consultation</a>
                 </div>
             </div>
         </div>

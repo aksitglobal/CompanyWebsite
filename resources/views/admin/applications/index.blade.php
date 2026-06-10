@@ -4,15 +4,13 @@
 <div class="container my-5" style="min-height: 70vh;">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Job Applications</h2>
-        <div class="d-flex align-items-center">
-            <a href="{{ route('admin.news.index') }}" class="btn btn-secondary me-3">Back to News Admin</a>
-            
-            <form action="{{ route('admin.logout') }}" method="POST" class="m-0">
-                @csrf
-                <button type="submit" class="btn btn-danger font-weight-bold">Logout</button>
-            </form>
-        </div>
+        <h2>
+            Job Applications
+            @if($unreadApplications > 0)
+                <span class="badge bg-danger ms-2" style="font-size:0.75rem;">{{ $unreadApplications }} New</span>
+            @endif
+        </h2>
+        @include('admin.partials.nav-buttons')
     </div>
 
     @if(session('success'))
@@ -36,9 +34,14 @@
                 </thead>
                 <tbody>
                     @forelse($applications as $app)
-                    <tr>
+                    <tr class="{{ !$app->is_read ? 'table-warning fw-semibold' : '' }}">
                         <td>{{ $loop->iteration }}</td>
-                        <td class="fw-bold">{{ $app->full_name }}</td>
+                        <td>
+                            @if(!$app->is_read)
+                                <i class="fas fa-circle text-danger me-1" style="font-size:8px;vertical-align:middle;"></i>
+                            @endif
+                            {{ $app->full_name }}
+                        </td>
                         <td><a href="mailto:{{ $app->email }}" class="text-decoration-none">{{ $app->email }}</a></td>
                         <td>{{ $app->phone }}</td>
                         <td><span class="badge bg-info text-dark">{{ $app->position }}</span></td>
@@ -51,17 +54,25 @@
                             @endif
                         </td>
                         <td>
-                            <form action="{{ route('admin.applications.destroy', $app->id) }}" method="POST" onsubmit="return confirm('WARNING: Are you sure you want to delete this application? It will permanently delete the associated CV from the server.');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            <div class="d-flex gap-2">
+                                @if(!$app->is_read)
+                                <form action="{{ route('admin.applications.markRead', $app->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Mark Read</button>
+                                </form>
+                                @endif
+                                <form action="{{ route('admin.applications.destroy', $app->id) }}" method="POST" onsubmit="return confirm('WARNING: Delete this application and its CV permanently?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @if($app->cover_letter)
                     <tr>
                         <td colspan="8" class="bg-light p-3 border-bottom">
-                            <strong class="text-dark">Cover Letter:</strong> 
+                            <strong class="text-dark">Cover Letter:</strong>
                             <p class="mb-0 mt-2 text-muted" style="white-space: pre-wrap; font-size: 14px;">{{ $app->cover_letter }}</p>
                         </td>
                     </tr>

@@ -12,8 +12,14 @@ class WhatsappQueryController extends Controller
      */
     public function index()
     {
-        $queries = WhatsappQuery::orderBy('created_at', 'desc')->get();
+        $queries = WhatsappQuery::orderByRaw('is_read ASC')->orderBy('created_at', 'desc')->get();
         return view('admin.whatsapp-queries.index', compact('queries'));
+    }
+
+    public function markRead($id)
+    {
+        WhatsappQuery::findOrFail($id)->update(['is_read' => true]);
+        return redirect()->back()->with('success', 'Query marked as read.');
     }
 
     /**

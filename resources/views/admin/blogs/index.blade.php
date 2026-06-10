@@ -5,15 +5,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Manage Blogs</h2>
-        <div class="d-flex align-items-center">
-            <a href="{{ route('admin.news.index') }}" class="btn btn-secondary me-2 text-white">Back to Dashboard</a>
-            <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary me-3">Add New Blog</a>
-
-            <form action="{{ route('admin.logout') }}" method="POST" class="m-0">
-                @csrf
-                <button type="submit" class="btn btn-danger font-weight-bold">Logout</button>
-            </form>
-        </div>
+        @include('admin.partials.nav-buttons')
     </div>
 
     @if(session('success'))
@@ -22,6 +14,9 @@
 
     <div class="card shadow-sm">
         <div class="card-body">
+            <div class="d-flex justify-content-end mb-2">
+                <a href="{{ route('admin.blogs.create') }}" class="btn btn-primary">Add New Blog</a>
+            </div>
             <table class="table table-bordered table-hover align-middle">
                 <thead class="table-dark">
                     <tr>

@@ -13,5 +13,10 @@ class Application extends Model
         'position',
         'cover_letter',
         'cv_path',
+        'is_read',
+    ];
+
+    protected $casts = [
+        'is_read' => 'boolean',
     ];
 }

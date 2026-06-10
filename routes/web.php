@@ -8,8 +8,10 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\WhatsappQueryController;
 use App\Http\Controllers\MeetingBookingController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ApplicationController as AdminApplicationController;
 use App\Http\Controllers\Admin\JobListingController as AdminJobListingController;
+use App\Http\Controllers\Admin\InboxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,15 +31,17 @@ Route::get('/it-solutions', [PageController::class, 'itSolutions'])->name('it-so
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // Form Submission Routes
-Route::post('/contact', [FormController::class, 'submitContact'])->name('contact.submit');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
 Route::post('/enrollment', [FormController::class, 'submitEnrollment'])->name('enrollment.submit');
 Route::post('/service-inquiry', [FormController::class, 'submitServiceInquiry'])->name('service.inquiry');
 
 // WhatsApp Query Route
 Route::post('/whatsapp-query', [WhatsappQueryController::class, 'store'])->name('whatsapp-query.store');
 
-// Meeting Booking Route
+// Meeting Booking Routes
 Route::post('/meeting-booking', [MeetingBookingController::class, 'store'])->name('meeting-booking.store');
+Route::get('/meeting-booking/check-date', [MeetingBookingController::class, 'checkDate'])->name('meeting-booking.check-date');
+Route::get('/meeting-booking/booked-dates', [MeetingBookingController::class, 'bookedDates'])->name('meeting-booking.booked-dates');
 
 // Job Application Routes
 Route::get('/apply', [ApplicationController::class, 'create'])->name('apply.create');
@@ -74,6 +78,7 @@ Route::prefix('aksit-secure-2026')->group(function () {
         // Admin Applications Panel
         Route::prefix('applications')->name('admin.applications.')->group(function () {
             Route::get('/', [AdminApplicationController::class, 'index'])->name('index');
+            Route::post('/{id}/mark-read', [AdminApplicationController::class, 'markRead'])->name('markRead');
             Route::delete('/{id}', [AdminApplicationController::class, 'destroy'])->name('destroy');
         });
 
@@ -102,13 +107,23 @@ Route::prefix('aksit-secure-2026')->group(function () {
         // Admin WhatsApp Queries Panel
         Route::prefix('whatsapp-queries')->name('admin.whatsapp-queries.')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\WhatsappQueryController::class, 'index'])->name('index');
+            Route::post('/{id}/mark-read', [\App\Http\Controllers\Admin\WhatsappQueryController::class, 'markRead'])->name('markRead');
             Route::delete('/{id}', [\App\Http\Controllers\Admin\WhatsappQueryController::class, 'destroy'])->name('destroy');
         });
 
         // Admin Meeting Bookings Panel
         Route::prefix('meeting-bookings')->name('admin.meeting-bookings.')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\MeetingBookingController::class, 'index'])->name('index');
+            Route::post('/{id}/confirm', [\App\Http\Controllers\Admin\MeetingBookingController::class, 'confirm'])->name('confirm');
             Route::delete('/{id}', [\App\Http\Controllers\Admin\MeetingBookingController::class, 'destroy'])->name('destroy');
+        });
+
+        // Admin Inbox (Contact Messages)
+        Route::prefix('inbox')->name('admin.inbox.')->group(function () {
+            Route::get('/', [InboxController::class, 'index'])->name('index');
+            Route::get('/{id}', [InboxController::class, 'show'])->name('show');
+            Route::post('/{id}/mark-read', [InboxController::class, 'markAsRead'])->name('markAsRead');
+            Route::delete('/{id}', [InboxController::class, 'destroy'])->name('destroy');
         });
         
     });

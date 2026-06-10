@@ -32,7 +32,6 @@
                     <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
                     <h4>Email Us</h4>
                     <p><a href="mailto:contact@aksitglobal.com">contact@aksitglobal.com</a></p>
-
                 </div>
                 <div class="contact-info-card reveal">
                     <div class="contact-card-icon"><i class="fas fa-clock"></i></div>
@@ -53,57 +52,51 @@
                     <h2>Send Us a Message</h2>
                     <p>Fill out the form below and our team will get back to you within 24 hours.</p>
 
-                    @if(session('success'))
-                        <div style="background: #d4edda; color: #155724; padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; border: 1px solid #c3e6cb;">
-                            <i class="fas fa-check-circle"></i> {{ session('success') }}
-                        </div>
-                    @endif
+                    {{-- AJAX Success Message --}}
+                    <div id="contactSuccessMsg" style="display:none; background: #d4edda; color: #155724; padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; border: 1px solid #c3e6cb;">
+                        <i class="fas fa-check-circle"></i> <span id="contactSuccessText"></span>
+                    </div>
+                    {{-- AJAX Error Message --}}
+                    <div id="contactErrorMsg" style="display:none; background: #f8d7da; color: #721c24; padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+                        <i class="fas fa-exclamation-circle"></i> <span id="contactErrorText"></span>
+                    </div>
 
-                    @if($errors->any())
-                        <div style="background: #f8d7da; color: #721c24; padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-                            <i class="fas fa-exclamation-circle"></i> Please fix the following errors:
-                            <ul style="margin-top: 8px; margin-left: 20px; list-style: disc;">
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form id="contactForm" class="contact-form" method="POST" action="{{ route('contact.submit') }}">
+                    <form id="contactForm" class="contact-form">
                         @csrf
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="contactName">Full Name *</label>
-                                <input type="text" id="contactName" name="name" placeholder="Your full name" value="{{ old('name') }}" required>
+                                <input type="text" id="contactName" name="name" placeholder="Your full name" required>
                             </div>
                             <div class="form-group">
                                 <label for="contactEmail">Email Address *</label>
-                                <input type="email" id="contactEmail" name="email" placeholder="your@email.com" value="{{ old('email') }}" required>
+                                <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="contactPhone">Phone / WhatsApp</label>
-                                <input type="tel" id="contactPhone" name="phone" placeholder="+92-XXX-XXXXXXX" value="{{ old('phone') }}">
+                                <input type="tel" id="contactPhone" name="phone" placeholder="+92-XXX-XXXXXXX">
                             </div>
                             <div class="form-group">
                                 <label for="contactSubject">Subject</label>
                                 <select id="contactSubject" name="subject">
                                     <option value="">Select a topic</option>
-                                    <option value="course-inquiry" {{ old('subject') == 'course-inquiry' ? 'selected' : '' }}>Course Enrollment</option>
-                                    <option value="service-inquiry" {{ old('subject') == 'service-inquiry' ? 'selected' : '' }}>Service Inquiry</option>
-                                    <option value="corporate-training" {{ old('subject') == 'corporate-training' ? 'selected' : '' }}>Corporate Training</option>
-                                    <option value="partnership" {{ old('subject') == 'partnership' ? 'selected' : '' }}>Partnership / Collaboration</option>
-                                    <option value="other" {{ old('subject') == 'other' ? 'selected' : '' }}>Other</option>
+                                    <option value="course-inquiry">Course Enrollment</option>
+                                    <option value="service-inquiry">Service Inquiry</option>
+                                    <option value="corporate-training">Corporate Training</option>
+                                    <option value="partnership">Partnership / Collaboration</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="contactMessage">Your Message *</label>
-                            <textarea id="contactMessage" name="message" placeholder="Tell us how we can help you..." rows="6" required>{{ old('message') }}</textarea>
+                            <textarea id="contactMessage" name="message" placeholder="Tell us how we can help you..." rows="6" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                        <button type="submit" id="contactSubmitBtn" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
                     </form>
                 </div>
 
@@ -132,3 +125,59 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form = this;
+    const btn = document.getElementById('contactSubmitBtn');
+    const successDiv = document.getElementById('contactSuccessMsg');
+    const errorDiv   = document.getElementById('contactErrorMsg');
+
+    // Reset alerts
+    successDiv.style.display = 'none';
+    errorDiv.style.display   = 'none';
+
+    // Disable button & show spinner
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    const formData = new FormData(form);
+
+    fetch('{{ route("contact.submit") }}', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': form.querySelector('[name="_token"]').value,
+            'Accept': 'application/json',
+        },
+        body: formData,
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+        if (data.success) {
+            document.getElementById('contactSuccessText').textContent = data.message;
+            successDiv.style.display = 'block';
+            successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            form.reset();
+        } else {
+            var errMsg = 'Please fix the following errors:';
+            if (data.errors) {
+                errMsg += ' ' + Object.values(data.errors).flat().join(' ');
+            }
+            document.getElementById('contactErrorText').textContent = errMsg;
+            errorDiv.style.display = 'block';
+        }
+    })
+    .catch(function() {
+        document.getElementById('contactErrorText').textContent = 'Something went wrong. Please try again later.';
+        errorDiv.style.display = 'block';
+    })
+    .finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+    });
+});
+</script>
+@endpush

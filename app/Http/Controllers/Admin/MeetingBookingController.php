@@ -12,8 +12,22 @@ class MeetingBookingController extends Controller
      */
     public function index()
     {
-        $bookings = MeetingBooking::orderBy('created_at', 'desc')->get();
+        $bookings = MeetingBooking::orderByRaw("FIELD(status, 'pending', 'confirmed')")
+            ->orderBy('meeting_date', 'asc')
+            ->get();
         return view('admin.meeting-bookings.index', compact('bookings'));
+    }
+
+    /**
+     * Confirm a meeting booking (blocks the date).
+     */
+    public function confirm($id)
+    {
+        $booking = MeetingBooking::findOrFail($id);
+        $booking->update(['status' => 'confirmed']);
+
+        $dateFormatted = \Carbon\Carbon::parse($booking->meeting_date)->format('d M Y');
+        return redirect()->back()->with('success', "Meeting on {$dateFormatted} confirmed and date is now blocked.");
     }
 
     /**
