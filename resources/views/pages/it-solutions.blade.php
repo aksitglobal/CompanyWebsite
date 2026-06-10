@@ -184,7 +184,7 @@
                 <p>Let our experts design a tailored IT solution that aligns with your goals. No obligation — just clarity and direction.</p>
                 <div class="cta-buttons">
                     <a href="javascript:void(0)" class="btn btn-gold" id="openProjectModal"><i class="fas fa-rocket"></i> Start a Project</a>
-                    <a href="https://wa.me/923000311868" target="_blank" class="btn btn-outline"><i class="fas fa-calendar-check"></i> Book a Free, No-Obligation Meeting</a>
+
                 </div>
             </div>
         </div>
