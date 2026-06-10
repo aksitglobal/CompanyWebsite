@@ -19,6 +19,7 @@
     @yield('content')
 
     @include('partials.footer')
+    @include('partials.email-picker')
 
     <a href="https://wa.me/923000311868" class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <div class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></div>

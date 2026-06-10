@@ -307,6 +307,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Email Platform Picker Logic ---
+    const emailPickerOverlay = document.getElementById('emailPickerOverlay');
+    const closeEmailPicker = document.getElementById('closeEmailPicker');
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const emailToCopy = document.getElementById('emailToCopy');
+    const emailToReach = "contact@aksitglobal.com";
+
+    // Update links
+    if (emailPickerOverlay) {
+        document.getElementById('gmailLink').href = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailToReach}`;
+        document.getElementById('outlookLink').href = `https://outlook.office.com/mail/deeplink/compose?to=${emailToReach}`;
+        document.getElementById('yahooLink').href = `https://compose.mail.yahoo.com/?to=${emailToReach}`;
+        document.getElementById('defaultMailto').href = `mailto:${emailToReach}`;
+    }
+
+    function openEmailPicker(e) {
+        if (e) e.preventDefault();
+        emailPickerOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeEmailPickerModal() {
+        emailPickerOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Intercept all contact@aksitglobal.com clicks
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const href = link.getAttribute('href') || '';
+        if (href.toLowerCase().trim().startsWith(`mailto:${emailToReach.toLowerCase()}`)) {
+            e.preventDefault();
+            openEmailPicker(e);
+        }
+
+        // Close logic
+        if (e.target === emailPickerOverlay || e.target.closest('#closeEmailPicker')) {
+            closeEmailPickerModal();
+        }
+    });
+
+    if (copyEmailBtn && emailToCopy) {
+        copyEmailBtn.addEventListener('click', () => {
+            emailToCopy.select();
+            document.execCommand('copy');
+            const originalText = copyEmailBtn.innerHTML;
+            copyEmailBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                copyEmailBtn.innerHTML = originalText;
+            }, 2000);
+        });
+    }
+
     // --- Smooth scroll for anchor links on same page ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
