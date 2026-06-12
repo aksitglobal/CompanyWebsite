@@ -82,7 +82,7 @@
         <div class="page-hero-content">
             <h1>Our <span>Blog</span></h1>
             <p>Insights, updates, and latest trends in technology.</p>
-            <div class="breadcrumb"><a href="{{ route('home') }}">Home</a> <i class="fas fa-chevron-right"></i> <span>Blog</span></div>
+
         </div>
     </section>
 

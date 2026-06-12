@@ -83,7 +83,7 @@
         <div class="page-hero-content">
             <h1>Our Training <span>Courses</span></h1>
             <p>Industry-recognized certifications and hands-on training programs to launch or advance your IT career.</p>
-            <div class="breadcrumb"><a href="{{ route('home') }}">Home</a> <i class="fas fa-chevron-right"></i> <span>Courses</span></div>
+
         </div>
     </section>
 
@@ -347,13 +347,94 @@
             <div class="cta-content reveal">
                 <h2>Can't Find the Right Course?</h2>
                 <p>We offer 50+ programs including HCIA, HCIP, MCSA, VCP, F5 BIG-IP, Juniper, and more. Contact us for a personalized recommendation!</p>
-                <div class="cta-buttons">
-                    <a href="{{ route('contact') }}" class="btn btn-gold">Get a Free Consultation</a>
-                    <a href="https://wa.me/923000311868" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                <div class="cta-buttons" style="justify-content: center;">
+                    <button class="btn btn-gold" id="contactUsBtn" onclick="openContactPopup()">Contact Us</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- CONTACT POPUP MODAL -->
+    <div id="contactPopupOverlay" style="
+        display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55);
+        z-index:9999; align-items:center; justify-content:center;
+        backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+    " onclick="closeContactPopup(event)">
+        <div id="contactPopupBox" style="
+            background:#fff; border-radius:20px; padding:40px 36px 32px;
+            max-width:420px; width:90%; text-align:center;
+            box-shadow:0 25px 60px rgba(0,0,0,0.25);
+            animation: popupIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+            position:relative;
+        ">
+            <!-- Close button -->
+            <button onclick="closeContactPopup()" style="
+                position:absolute; top:14px; right:16px; background:none;
+                border:none; font-size:20px; cursor:pointer; color:#999;
+                line-height:1; padding:4px 8px; border-radius:50%;
+                transition:background 0.2s, color 0.2s;
+            " onmouseover="this.style.background='#f3f4f6';this.style.color='#333';"
+               onmouseout="this.style.background='none';this.style.color='#999';">&times;</button>
+
+            <!-- WhatsApp Icon -->
+            <div style="
+                width:72px; height:72px; background:linear-gradient(135deg,#25d366,#128c7e);
+                border-radius:50%; display:flex; align-items:center; justify-content:center;
+                margin:0 auto 18px; box-shadow:0 8px 24px rgba(37,211,102,0.35);
+            ">
+                <i class="fab fa-whatsapp" style="font-size:36px; color:#fff;"></i>
+            </div>
+
+            <h3 style="font-size:22px; font-weight:700; color:#1a1a1a; margin-bottom:8px;">Chat with Us</h3>
+            <p style="color:#666; font-size:15px; margin-bottom:6px; line-height:1.5;">
+                Have a question about our courses?<br>We're available on WhatsApp!
+            </p>
+            <p style="
+                font-size:17px; font-weight:700; color:#128c7e; margin-bottom:24px;
+                letter-spacing:0.5px;
+            ">+92 300 031 1868</p>
+
+            <a href="https://wa.me/923000311868?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses." target="_blank" style="
+                display:inline-flex; align-items:center; gap:10px;
+                background:linear-gradient(135deg,#25d366,#128c7e);
+                color:#fff; text-decoration:none; font-weight:700; font-size:16px;
+                padding:14px 32px; border-radius:50px;
+                box-shadow:0 6px 20px rgba(37,211,102,0.4);
+                transition:transform 0.2s, box-shadow 0.2s;
+                width:100%; justify-content:center;
+            " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(37,211,102,0.5)';"
+               onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 20px rgba(37,211,102,0.4)';">
+                <i class="fab fa-whatsapp" style="font-size:20px;"></i>
+                Start WhatsApp Chat
+            </a>
+
+            <p style="margin-top:16px; font-size:13px; color:#aaa;">We typically reply within a few minutes.</p>
+        </div>
+    </div>
+
+    <style>
+        @keyframes popupIn {
+            from { opacity:0; transform:scale(0.8) translateY(20px); }
+            to   { opacity:1; transform:scale(1) translateY(0); }
+        }
+    </style>
+    <script>
+        function openContactPopup() {
+            var overlay = document.getElementById('contactPopupOverlay');
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeContactPopup(event) {
+            if (event && event.target !== document.getElementById('contactPopupOverlay') && event.type === 'click') return;
+            var overlay = document.getElementById('contactPopupOverlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeContactPopup();
+        });
+    </script>
 
     <!-- ENROLLMENT MODAL -->
     <div class="modal-overlay" id="enrollOverlay">

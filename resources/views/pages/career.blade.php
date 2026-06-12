@@ -18,23 +18,23 @@
     .career-hero h1 span {
         color: #facc15; /* gold */
     }
-    .nav-pills .nav-link {
-        color: #555;
-        font-weight: 600;
-        border-radius: 30px;
-        padding: 12px 35px;
-        margin: 0 10px;
-        border: 2px solid #ddd;
-        transition: all 0.3s ease;
+    .section-heading {
+        text-align: center;
+        margin-bottom: 50px;
     }
-    .nav-pills .nav-link:hover {
-        background-color: #f4f4f4;
+    .section-heading h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1a1a1a;
     }
-    .nav-pills .nav-link.active {
-        background-color: #facc15;
-        color: #111;
-        border-color: #facc15;
-        box-shadow: 0 5px 15px rgba(250, 204, 21, 0.4);
+    .section-heading h2 span {
+        color: #b45309;
+    }
+    .section-heading hr {
+        width: 60px;
+        border: 3px solid #facc15;
+        margin: 15px auto 0;
+        border-radius: 2px;
     }
     .job-card {
         background: #fff;
@@ -100,15 +100,17 @@
     <div class="container">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         
-        <!-- Controls -->
-        <ul class="nav nav-pills justify-content-center mb-5">
-            <li class="nav-item">
-                <a class="nav-link {{ $type === 'internship' ? 'active' : '' }}" href="{{ route('career', ['type' => 'internship']) }}">Internships</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ $type === 'job' ? 'active' : '' }}" href="{{ route('career', ['type' => 'job']) }}">Full-Time Jobs</a>
-            </li>
-        </ul>
+        <!-- Section Heading -->
+        <div class="section-heading">
+            <h2>
+                @if($type === 'internship')
+                    Open <span>Internship</span> Positions
+                @else
+                    Full-Time <span>Job</span> Openings
+                @endif
+            </h2>
+            <hr>
+        </div>
 
         <!-- Listings -->
         <div class="row justify-content-center">

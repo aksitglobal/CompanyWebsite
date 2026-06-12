@@ -17,6 +17,7 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
+        // 1. Save to database (existing behaviour — unchanged)
         ContactMessage::create([
             'full_name' => $validated['name'],
             'email'     => $validated['email'],
@@ -25,13 +26,29 @@ class ContactController extends Controller
             'message'   => $validated['message'],
         ]);
 
+        // 2. Build the pre-filled WhatsApp message
+        $whatsappNumber = '923000311868'; // +92 300 0311868
+
+        $waMessage = implode("\n", [
+            'Name: '    . $validated['name'],
+            'Email: '   . $validated['email'],
+            'Phone: '   . ($validated['phone'] ?? 'N/A'),
+            'Subject: ' . ($validated['subject'] ?? 'N/A'),
+            'Message: ' . $validated['message'],
+        ]);
+
+        $whatsappUrl = 'https://wa.me/' . $whatsappNumber . '?text=' . rawurlencode($waMessage);
+
+        // 3. Return JSON with the WhatsApp redirect URL
         if ($request->expectsJson()) {
             return response()->json([
-                'success' => true,
-                'message' => 'Thank you! Your message has been sent. We will get back to you within 24 hours.',
+                'success'       => true,
+                'message'       => 'Your message has been saved! Redirecting you to WhatsApp...',
+                'whatsapp_url'  => $whatsappUrl,
             ]);
         }
 
-        return back()->with('success', 'Thank you! Your message has been sent. We will get back to you within 24 hours.');
+        // Fallback for non-AJAX submissions
+        return redirect($whatsappUrl);
     }
 }

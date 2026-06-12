@@ -9,7 +9,7 @@
         <div class="page-hero-content">
             <h1>Contact <span>Us</span></h1>
             <p>We'd love to hear from you. Whether you have a question about our courses, services, or anything else — our team is ready to help.</p>
-            <div class="breadcrumb"><a href="{{ route('home') }}">Home</a> <i class="fas fa-chevron-right"></i> <span>Contact</span></div>
+
         </div>
     </section>
 
@@ -20,7 +20,7 @@
                 <div class="contact-info-card reveal">
                     <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <h4>Visit Our Office</h4>
-                    <p>Shop# 16-17, 1st Floor, E1 Emporium, Paradise Boulevard, Main GT Rd, near Bahria Paradise Gate, Rawalpindi, Pakistan</p>
+                    <p>Office# 16-17, 1st Floor, E1 Emporium, Paradise Boulevard, Main GT Rd, near Bahria Paradise Gate, Rawalpindi, Pakistan</p>
                 </div>
                 <div class="contact-info-card reveal">
                     <div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div>
@@ -142,7 +142,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
     // Disable button & show spinner
     btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving & Redirecting...';
 
     const formData = new FormData(form);
 
@@ -157,10 +157,21 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     .then(function(res) { return res.json(); })
     .then(function(data) {
         if (data.success) {
+            // Show success banner
             document.getElementById('contactSuccessText').textContent = data.message;
             successDiv.style.display = 'block';
             successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             form.reset();
+
+            // Update button to indicate WhatsApp redirect
+            btn.innerHTML = '<i class="fab fa-whatsapp"></i> Opening WhatsApp...';
+
+            // Redirect to WhatsApp after a short delay so the user sees the success message
+            if (data.whatsapp_url) {
+                setTimeout(function() {
+                    window.location.href = data.whatsapp_url;
+                }, 1500);
+            }
         } else {
             var errMsg = 'Please fix the following errors:';
             if (data.errors) {
@@ -168,13 +179,17 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
             }
             document.getElementById('contactErrorText').textContent = errMsg;
             errorDiv.style.display = 'block';
+
+            // Re-enable button on validation error
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         }
     })
     .catch(function() {
         document.getElementById('contactErrorText').textContent = 'Something went wrong. Please try again later.';
         errorDiv.style.display = 'block';
-    })
-    .finally(function() {
+
+        // Re-enable button on network error
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
     });

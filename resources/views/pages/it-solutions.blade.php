@@ -9,7 +9,7 @@
         <div class="page-hero-content">
             <h1>IT <span>Solutions</span></h1>
             <p>At AKSIT Global, we deliver comprehensive, outcome-focused IT solutions built to solve real business challenges.</p>
-            <div class="breadcrumb"><a href="{{ route('home') }}">Home</a> <i class="fas fa-chevron-right"></i> <span>IT Solutions</span></div>
+
         </div>
     </section>
 

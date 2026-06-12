@@ -33,7 +33,7 @@
                 <h4>Contact Us</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Shop# 16-17, 1st Floor, E1 Emporium, Paradise Boulevard, Main GT Rd, near Bahria Paradise Gate, Rawalpindi, Pakistan</span>
+                    <span>Office# 16-17, 1st Floor, E1 Emporium, Paradise Boulevard, Main GT Rd, near Bahria Paradise Gate, Rawalpindi, Pakistan</span>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-phone-alt"></i>
