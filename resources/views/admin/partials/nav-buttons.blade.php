@@ -18,6 +18,11 @@
         Manage Blogs
     </a>
 
+    {{-- Fee Structure --}}
+    <a href="{{ route('admin.fee-structure.index') }}" class="btn btn-danger text-white">
+        Fee Structure
+    </a>
+
     {{-- Manage Jobs --}}
     <a href="{{ route('admin.jobs.index') }}" class="btn btn-warning text-dark">
         Manage Jobs

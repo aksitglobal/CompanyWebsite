@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ApplicationController as AdminApplicationController;
 use App\Http\Controllers\Admin\JobListingController as AdminJobListingController;
 use App\Http\Controllers\Admin\InboxController;
+use App\Http\Controllers\Admin\FeeStructureController as AdminFeeStructureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::get('/career', [JobListingController::class, 'index'])->name('career');
 Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/it-solutions', [PageController::class, 'itSolutions'])->name('it-solutions');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/fee-structure', [PageController::class, 'feeStructure'])->name('fee-structure');
 
 // Form Submission Routes
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
@@ -124,6 +126,12 @@ Route::prefix('aksit-secure-2026')->group(function () {
             Route::get('/{id}', [InboxController::class, 'show'])->name('show');
             Route::post('/{id}/mark-read', [InboxController::class, 'markAsRead'])->name('markAsRead');
             Route::delete('/{id}', [InboxController::class, 'destroy'])->name('destroy');
+        });
+
+        // Admin Fee Structure
+        Route::prefix('fee-structure')->name('admin.fee-structure.')->group(function () {
+            Route::get('/', [AdminFeeStructureController::class, 'index'])->name('index');
+            Route::post('/upload', [AdminFeeStructureController::class, 'upload'])->name('upload');
         });
         
     });

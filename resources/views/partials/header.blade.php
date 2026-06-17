@@ -23,7 +23,13 @@
                     <a href="{{ route('career', ['type' => 'job']) }}">Job</a>
                 </div>
             </div>
-            <a href="{{ route('courses') }}" class="{{ request()->routeIs('courses') ? 'active' : '' }}">Courses</a>
+            <div class="nav-dropdown">
+                <a href="{{ route('courses') }}" class="{{ request()->routeIs('courses') || request()->routeIs('fee-structure') ? 'active' : '' }}" style="cursor: pointer;">Courses ▾</a>
+                <div class="nav-dropdown-content">
+                    <a href="{{ route('courses') }}">Our Courses</a>
+                    <a href="{{ route('fee-structure') }}">Fee Structure</a>
+                </div>
+            </div>
             <a href="{{ route('blog') }}" class="{{ request()->routeIs('blog') || request()->routeIs('blog.show') ? 'active' : '' }}">Blog</a>
             <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
         </nav>

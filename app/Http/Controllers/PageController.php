@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -19,6 +20,13 @@ class PageController extends Controller
     public function courses()
     {
         return view('pages.courses');
+    }
+
+    public function feeStructure()
+    {
+        $pdfPath = Setting::get('fee_structure_pdf');
+        $pdfUrl  = $pdfPath ? asset('storage/' . $pdfPath) : null;
+        return view('pages.fee-structure', compact('pdfUrl'));
     }
 
     public function services()
