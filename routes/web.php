@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ApplicationController as AdminApplicationControll
 use App\Http\Controllers\Admin\JobListingController as AdminJobListingController;
 use App\Http\Controllers\Admin\InboxController;
 use App\Http\Controllers\Admin\FeeStructureController as AdminFeeStructureController;
+use App\Http\Controllers\Admin\ClassScheduleController as AdminClassScheduleController;
+use App\Http\Controllers\Admin\ServiceContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,8 @@ Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/it-solutions', [PageController::class, 'itSolutions'])->name('it-solutions');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/fee-structure', [PageController::class, 'feeStructure'])->name('fee-structure');
+Route::get('/class-schedule', [PageController::class, 'classSchedule'])->name('class-schedule');
+Route::get('/solutions/{slug}', [PageController::class, 'servicePage'])->name('service.page');
 
 // Form Submission Routes
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
@@ -132,6 +136,22 @@ Route::prefix('aksit-secure-2026')->group(function () {
         Route::prefix('fee-structure')->name('admin.fee-structure.')->group(function () {
             Route::get('/', [AdminFeeStructureController::class, 'index'])->name('index');
             Route::post('/upload', [AdminFeeStructureController::class, 'upload'])->name('upload');
+        });
+
+        // Admin Class Schedule
+        Route::prefix('class-schedule')->name('admin.class-schedule.')->group(function () {
+            Route::get('/', [AdminClassScheduleController::class, 'index'])->name('index');
+            Route::post('/store', [AdminClassScheduleController::class, 'store'])->name('store');
+            Route::delete('/destroy', [AdminClassScheduleController::class, 'destroy'])->name('destroy');
+        });
+
+        // Admin Services Content Management
+        Route::prefix('services')->name('admin.services.')->group(function () {
+            Route::get('/', [ServiceContentController::class, 'index'])->name('index');
+            Route::get('/{slug}', [ServiceContentController::class, 'show'])->name('show');
+            Route::post('/{slug}/store', [ServiceContentController::class, 'store'])->name('store');
+            Route::delete('/{slug}/{id}', [ServiceContentController::class, 'destroy'])->name('destroy');
+            Route::post('/{slug}/reorder', [ServiceContentController::class, 'reorder'])->name('reorder');
         });
         
     });

@@ -30,7 +30,7 @@
 
                 <div class="mb-3">
                     <label for="content" class="form-label">Content</label>
-                    <textarea class="form-control" id="content" name="content" rows="10" required>{{ old('content', $blog->content) }}</textarea>
+                    <textarea class="form-control rich-editor" id="content" name="content" rows="10" required>{{ old('content', $blog->content) }}</textarea>
                 </div>
 
                 <div class="mb-3">
@@ -55,3 +55,17 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<script>
+ClassicEditor
+    .create(document.querySelector('.rich-editor'))
+    .then(function(editor) {
+        document.querySelector('form').addEventListener('submit', function() {
+            document.querySelector('.rich-editor').value = editor.getData();
+        });
+    })
+    .catch(console.error);
+</script>
+@endpush

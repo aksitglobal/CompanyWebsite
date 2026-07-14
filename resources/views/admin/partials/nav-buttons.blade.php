@@ -18,9 +18,20 @@
         Manage Blogs
     </a>
 
+    {{-- Manage Services --}}
+    <a href="{{ route('admin.services.index') }}" class="btn btn-outline-warning text-dark">
+        <i class="fas fa-cogs me-1"></i>Manage Services
+    </a>
+
+
     {{-- Fee Structure --}}
     <a href="{{ route('admin.fee-structure.index') }}" class="btn btn-danger text-white">
         Fee Structure
+    </a>
+
+    {{-- Class Schedule --}}
+    <a href="{{ route('admin.class-schedule.index') }}" class="btn btn-outline-info text-dark">
+        <i class="fas fa-calendar-alt me-1"></i>Class Schedule
     </a>
 
     {{-- Manage Jobs --}}

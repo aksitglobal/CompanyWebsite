@@ -143,7 +143,7 @@
                                     <div class="job-type">{{ $listing->badge }}</div>
                                 @endif
                                 <h3>{{ $listing->title }}</h3>
-                                <p class="job-desc">{{ $listing->description }}</p>
+                                <p class="job-desc">{!! $listing->description !!}</p>
                                 <a href="{{ route('apply.create', ['position' => $listing->title]) }}" class="apply-btn">Apply Now
                                     &rarr;</a>
                             </div>
