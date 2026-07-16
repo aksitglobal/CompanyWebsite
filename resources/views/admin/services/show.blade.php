@@ -56,17 +56,20 @@
 
                     <!-- Text Form -->
                     <div id="form-text">
-                        <form action="{{ route('admin.services.store', $slug) }}" method="POST">
+                        <form id="textContentForm" action="{{ route('admin.services.store', $slug) }}" method="POST">
                             @csrf
                             <input type="hidden" name="content_type" value="text">
+                            {{-- Hidden field that actually carries the POST value --}}
+                            <input type="hidden" name="text_content" id="text_content_hidden" value="{{ old('text_content') }}">
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Text / Description</label>
-                                <textarea name="text_content" class="form-control rich-editor" id="text_content" rows="8"
+                                {{-- No name/required on the textarea — CKEditor manages it --}}
+                                <textarea class="form-control rich-editor" id="text_content_editor" rows="8"
                                     placeholder="Enter text content for this service page..."
-                                    required>{{ old('text_content') }}</textarea>
+                                >{{ old('text_content') }}</textarea>
                                 <div class="form-text">You can bold, italicise, add headings, bullet points and links.</div>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">
+                            <button type="submit" class="btn btn-primary w-100" id="saveTextBtn">
                                 <i class="fas fa-save me-1"></i>Save Text
                             </button>
                         </form>
@@ -238,13 +241,40 @@
 
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script>
-ClassicEditor
-    .create(document.querySelector('#text_content'))
-    .then(function(editor) {
-        document.querySelector('#form-text form').addEventListener('submit', function() {
-            document.querySelector('#text_content').value = editor.getData();
+(function() {
+    var editorTextarea = document.querySelector('#text_content_editor');
+    var hiddenInput    = document.querySelector('#text_content_hidden');
+    var form           = document.querySelector('#textContentForm');
+    var saveBtn        = document.querySelector('#saveTextBtn');
+
+    if (!editorTextarea || !form) { return; }
+
+    ClassicEditor
+        .create(editorTextarea)
+        .then(function(editor) {
+
+            // When Save Text is clicked, populate the hidden input then submit
+            saveBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                var data = editor.getData();
+                var stripped = data.replace(/<[^>]*>/g, '').trim();
+
+                if (!stripped) {
+                    alert('Please enter some text content before saving.');
+                    return;
+                }
+
+                // Write editor HTML into the hidden POST field
+                hiddenInput.value = data;
+
+                // Submit without triggering click listeners again
+                form.submit();
+            });
+        })
+        .catch(function(err) {
+            console.error('CKEditor error:', err);
         });
-    })
-    .catch(console.error);
+})();
 </script>
 @endsection
