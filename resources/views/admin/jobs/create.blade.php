@@ -42,7 +42,7 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label fw-bold">Description <span class="text-danger">*</span></label>
-                    <textarea name="description" id="description" class="form-control rich-editor" rows="5" required>{{ old('description') }}</textarea>
+                    <textarea name="description" id="description" class="form-control rich-editor" rows="5">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="mb-4 form-check">
@@ -61,10 +61,10 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script>
 ClassicEditor
-    .create(document.querySelector('.rich-editor'))
+    .create(document.querySelector('#description'))
     .then(function(editor) {
-        document.querySelector('form').addEventListener('submit', function() {
-            document.querySelector('.rich-editor').value = editor.getData();
+        document.querySelector('form').addEventListener('submit', function(e) {
+            document.querySelector('#description').value = editor.getData();
         });
     })
     .catch(console.error);

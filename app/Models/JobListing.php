@@ -13,4 +13,8 @@ class JobListing extends Model
         'badge',
         'is_active',
     ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
 }
