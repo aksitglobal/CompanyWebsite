@@ -50,64 +50,42 @@
     flex-shrink: 0;
 }
 
-/* === CORE SERVICES === */
-.home-core-services {
-    padding: 90px 0;
-    background: var(--off-white, #f4f6fa);
+/* === CAROUSEL (Technology Partners) === */
+@keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
-.core-services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
-.core-service-card {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 30px 24px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-    position: relative;
+.partners-carousel-wrap {
     overflow: hidden;
+    position: relative;
+    /* fade left/right edges */
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
-.core-service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #2563eb, #c9a84c);
-    transform: scaleX(0);
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+.carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    width: max-content;
+    animation: scroll 10s linear infinite;
 }
-.core-service-card:hover::before { transform: scaleX(1); }
-.core-service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+.carousel-track:hover {
+    animation-play-state: paused;
 }
-.cs-icon-wrap {
-    width: 60px; height: 60px;
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; color: #ffffff;
-    margin-bottom: 18px;
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+.carousel-logo {
+    height: 162px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+    filter: grayscale(30%);
+    opacity: 0.85;
+    transition: filter 0.3s, opacity 0.3s;
 }
-.core-service-card:hover .cs-icon-wrap { transform: scale(1.1) rotate(-5deg); }
-.core-service-card h3 {
-    font-size: 1rem; font-weight: 700;
-    color: var(--primary, #1a2d5a);
-    margin-bottom: 10px; line-height: 1.3;
+.carousel-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
 }
-.core-service-card p {
-    font-size: 0.87rem; color: #6b7280;
-    line-height: 1.7; margin-bottom: 16px;
-}
-.cs-link {
-    font-size: 0.85rem; font-weight: 600;
-    color: #2563eb;
-    display: inline-flex; align-items: center; gap: 6px;
-}
-.cs-link i { font-size: 0.75rem; transition: all 0.3s; }
-.cs-link:hover i { transform: translateX(4px); }
 
 /* === WHY BUSINESSES CHOOSE US === */
 .home-why-us {
@@ -173,34 +151,6 @@
     padding: 80px 0;
     background: #ffffff;
 }
-.partners-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-}
-.partner-badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #f4f6fa;
-    border: 1px solid #e5e7eb;
-    border-radius: 50px;
-    padding: 12px 24px;
-    font-size: 0.9rem; font-weight: 700;
-    color: #374151;
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-    cursor: default;
-}
-.partner-badge i { font-size: 1.3rem; }
-.partner-badge:hover {
-    background: #ffffff;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border-color: #d1d5db;
-    transform: translateY(-3px);
-    color: #1a2d5a;
-}
 
 /* === TRAINING SECONDARY === */
 .training-secondary {
@@ -238,18 +188,16 @@
 
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
-    .core-services-grid { grid-template-columns: repeat(2, 1fr); }
     .why-biz-grid { grid-template-columns: repeat(2, 1fr); }
     .trust-divider { display: none !important; }
     .trust-item { padding: 8px 18px; }
 }
 @media (max-width: 768px) {
-    .core-services-grid { grid-template-columns: 1fr; }
     .why-biz-grid { grid-template-columns: 1fr; }
     .trust-bar-grid { justify-content: flex-start; }
     .trust-item { font-size: 0.8rem; padding: 6px 12px; }
-    .partners-grid { gap: 10px; }
-    .partner-badge { padding: 10px 16px; font-size: 0.82rem; }
+    .carousel-track { gap: 28px; }
+    .carousel-logo { height: 119px; }
     .training-sec-inner { flex-direction: column; text-align: center; }
     .training-sec-icon { margin: 0 auto; }
 }
@@ -354,93 +302,6 @@
         </div>
     </section>
 
-    <!-- ===== CORE SERVICES ===== -->
-    <section class="home-core-services">
-        <div class="container">
-            <div class="section-title reveal">
-                <h2>Our Core IT Services</h2>
-                <p>End-to-end technology solutions designed to transform and secure your business</p>
-            </div>
-            <div class="core-services-grid">
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #1e3a6e, #2563eb);">
-                        <i class="fas fa-shield-halved"></i>
-                    </div>
-                    <h3>Cybersecurity Solutions</h3>
-                    <p>Comprehensive security assessments, threat monitoring, firewall management, penetration testing,
-                        and incident response to protect your business assets.</p>
-                    <a href="{{ route('services') }}" class="cs-link">Explore Service <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #7c3aed, #a78bfa);">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Managed IT Services</h3>
-                    <p>Proactive monitoring, maintenance, and support for your entire IT environment — so your team
-                        can focus on what matters most.</p>
-                    <a href="{{ route('services') }}" class="cs-link">Explore Service <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #0369a1, #38bdf8);">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Cloud Infrastructure & Migration</h3>
-                    <p>Strategic cloud planning, migration to AWS, Azure & hybrid environments, with ongoing
-                        optimization and cost management.</p>
-                    <a href="{{ route('services') }}" class="cs-link">Explore Service <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #059669, #34d399);">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Network Infrastructure Design</h3>
-                    <p>Enterprise LAN/WAN design, SD-WAN deployment, structured cabling, wireless solutions,
-                        and network performance optimization.</p>
-                    <a href="{{ route('services') }}" class="cs-link">Explore Service <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #b45309, #fbbf24);">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <h3>Business Software & System Integration</h3>
-                    <p>ERP, CRM, and custom software implementation with seamless integration across your existing
-                        systems and workflows.</p>
-                    <a href="{{ route('services') }}" class="cs-link">Explore Service <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #be185d, #f472b6);">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Digital Marketing & Social Media</h3>
-                    <p>Data-driven digital marketing, SEO, paid advertising, and social media management to grow
-                        your brand and generate quality leads.</p>
-                    <a href="{{ route('services') }}" class="cs-link">Explore Service <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #0f766e, #2dd4bf);">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>IT Consultancy & Digital Transformation</h3>
-                    <p>Strategic advisory services to modernize your operations, adopt emerging technologies, and
-                        achieve long-term digital competitiveness.</p>
-                    <a href="{{ route('services') }}" class="cs-link">Explore Service <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="core-service-card reveal">
-                    <div class="cs-icon-wrap" style="background: linear-gradient(135deg, #dc2626, #f87171);">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Professional IT Training</h3>
-                    <p>Industry-recognized certifications in Cisco, Microsoft, AWS, cybersecurity and more — upskill
-                        your workforce or individual talent.</p>
-                    <a href="{{ route('courses') }}" class="cs-link">View Courses <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 48px;">
-                <a href="{{ route('services') }}" class="btn btn-primary">View All Services <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
     <!-- ===== WHY BUSINESSES CHOOSE US ===== -->
     <section class="home-why-us">
         <div class="container">
@@ -501,28 +362,41 @@
         </div>
     </section>
 
-    <!-- ===== TECHNOLOGY PARTNERS ===== -->
+    <!-- ===== TECHNOLOGY PARTNERS (auto-scroll carousel) ===== -->
     <section class="tech-partners">
         <div class="container">
             <div class="section-title reveal">
-                <h2>Technology Partners & Platforms</h2>
+                <h2>Technology Partners &amp; Platforms</h2>
                 <p>We partner with the world's leading technology vendors to deliver best-in-class solutions</p>
             </div>
-            <div class="partners-grid reveal">
-                <div class="partner-badge">
-                    <i class="fas fa-network-wired" style="color:#1ba0d8;"></i>
-                    <span>Cisco</span>
-                </div>
-                <div class="partner-badge">
-                    <i class="fas fa-briefcase" style="color:#008fd3;"></i>
-                    <span>SAP Ariba</span>
-                </div>
-                <div class="partner-badge">
-                    <i class="fas fa-graduation-cap" style="color:#1ba0d8;"></i>
-                    <span>Cisco Networking Academy</span>
+        </div>
+
+        @if(isset($partnerLogos) && $partnerLogos->count() > 0)
+            {{-- Duplicate the list so the -50% loop lands on an identical frame --}}
+            @php $items = $partnerLogos->values(); @endphp
+            <div class="partners-carousel-wrap mt-4">
+                <div class="carousel-track">
+                    @foreach($items as $logo)
+                        <img src="{{ asset('storage/' . $logo->logo_path) }}"
+                             alt="{{ $logo->name }}"
+                             class="carousel-logo"
+                             title="{{ $logo->name }}">
+                    @endforeach
+                    {{-- Duplicate set for seamless loop --}}
+                    @foreach($items as $logo)
+                        <img src="{{ asset('storage/' . $logo->logo_path) }}"
+                             alt="{{ $logo->name }}"
+                             class="carousel-logo"
+                             title="{{ $logo->name }}">
+                    @endforeach
                 </div>
             </div>
-        </div>
+        @else
+            <div class="text-center py-4 text-muted">
+                <i class="fas fa-handshake fa-2x mb-2"></i>
+                <p class="mb-0">Partners logos coming soon</p>
+            </div>
+        @endif
     </section>
 
     <!-- ===== CTA BANNER ===== -->

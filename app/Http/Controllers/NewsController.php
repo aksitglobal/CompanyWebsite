@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\News;
+use App\Models\PartnerLogo;
 
 class NewsController extends Controller
 {
     public function home()
     {
-        $activeNews = News::where('is_active', true)->get();
-        return view('pages.home', compact('activeNews'));
+        $activeNews    = News::where('is_active', true)->get();
+        $partnerLogos  = PartnerLogo::active()->get();
+        return view('pages.home', compact('activeNews', 'partnerLogos'));
     }
 
     public function index()

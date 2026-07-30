@@ -80,6 +80,11 @@
         @endif
     </a>
 
+    {{-- Partner Logos --}}
+    <a href="{{ route('admin.partner-logos.index') }}" class="btn btn-outline-primary text-dark">
+        <i class="fas fa-images me-1"></i>Partner Logos
+    </a>
+
     {{-- Logout --}}
     <form action="{{ route('admin.logout') }}" method="POST" class="m-0">
         @csrf

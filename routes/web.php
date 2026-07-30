@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\InboxController;
 use App\Http\Controllers\Admin\FeeStructureController as AdminFeeStructureController;
 use App\Http\Controllers\Admin\ClassScheduleController as AdminClassScheduleController;
 use App\Http\Controllers\Admin\ServiceContentController;
+use App\Http\Controllers\Admin\PartnerLogoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,6 +153,15 @@ Route::prefix('aksit-secure-2026')->group(function () {
             Route::post('/{slug}/store', [ServiceContentController::class, 'store'])->name('store');
             Route::delete('/{slug}/{id}', [ServiceContentController::class, 'destroy'])->name('destroy');
             Route::post('/{slug}/reorder', [ServiceContentController::class, 'reorder'])->name('reorder');
+        });
+
+        // Admin Partner Logos
+        Route::prefix('partner-logos')->name('admin.partner-logos.')->group(function () {
+            Route::get('/', [PartnerLogoController::class, 'index'])->name('index');
+            Route::post('/', [PartnerLogoController::class, 'store'])->name('store');
+            Route::delete('/{id}', [PartnerLogoController::class, 'destroy'])->name('destroy');
+            Route::post('/{id}/toggle', [PartnerLogoController::class, 'toggleStatus'])->name('toggle');
+            Route::post('/update-order', [PartnerLogoController::class, 'updateOrder'])->name('updateOrder');
         });
         
     });
