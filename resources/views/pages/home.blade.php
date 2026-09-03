@@ -222,8 +222,8 @@
             @endif
             <div class="hero-badge">🔒 Trusted IT Solutions Partner</div>
             <h1>Empowering Businesses Through <span>Secure, Scalable & Innovative</span> IT Solutions</h1>
-            <p>AKSIT GLOBAL is your enterprise technology partner — delivering cybersecurity, cloud infrastructure,
-                managed IT services, network design, and digital transformation for businesses that demand excellence.</p>
+            <p>AKSIT GLOBAL is your enterprise technology partner — delivering managed IT services, network design,
+                digital transformation, cybersecurity, and cloud infrastructure for businesses that demand excellence.</p>
             <div class="hero-buttons">
                 <a href="{{ route('services') }}" class="btn btn-gold">Our IT Services</a>
             </div>
