@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'AKSIT GLOBAL — IT Solutions & Professional Training')</title>
     <meta name="description" content="@yield('description', 'AKSIT GLOBAL delivers world-class cybersecurity, cloud computing, networking, digital marketing, and professional IT training services in Pakistan.')">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     @stack('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">

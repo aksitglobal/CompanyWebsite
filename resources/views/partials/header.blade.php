@@ -31,14 +31,14 @@
             </div>
 
             <div class="nav-dropdown">
-                <a href="{{ route('career', ['type' => 'internship']) }}" class="{{ request()->routeIs('career') ? 'active' : '' }}" style="cursor: pointer;">Career ▾</a>
+                <a href="{{ route('career', ['type' => 'internship']) }}" class="nav-dropdown-toggle {{ request()->routeIs('career') ? 'active' : '' }}" style="cursor: pointer;">Career ▾</a>
                 <div class="nav-dropdown-content">
                     <a href="{{ route('career', ['type' => 'internship']) }}">Internship</a>
                     <a href="{{ route('career', ['type' => 'job']) }}">Job</a>
                 </div>
             </div>
             <div class="nav-dropdown">
-                <a href="{{ route('courses') }}" class="{{ request()->routeIs('courses') || request()->routeIs('fee-structure') || request()->routeIs('class-schedule') ? 'active' : '' }}" style="cursor: pointer;">Courses ▾</a>
+                <a href="{{ route('courses') }}" class="nav-dropdown-toggle {{ request()->routeIs('courses') || request()->routeIs('fee-structure') || request()->routeIs('class-schedule') ? 'active' : '' }}" style="cursor: pointer;">Courses ▾</a>
                 <div class="nav-dropdown-content">
                     <a href="{{ route('courses') }}">Our Courses</a>
                     <a href="{{ route('fee-structure') }}">Fee Structure</a>

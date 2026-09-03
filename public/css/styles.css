@@ -292,7 +292,31 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     cursor: pointer;
 }
 
-/* Desktop: open dropdown on hover */
+/*
+ * CRITICAL: Hide dropdown content by default.
+ * High-specificity selector (.nav-menu .nav-dropdown .nav-dropdown-content)
+ * prevents Bootstrap or any later-loaded stylesheet from overriding display:none.
+ */
+.nav-menu .nav-dropdown .nav-dropdown-content {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-dark);
+    min-width: 200px;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.08);
+    z-index: 1100;
+    overflow: hidden;
+}
+
+/* Desktop: unhide on hover — higher specificity than the hide rule above */
+.nav-menu .nav-dropdown:hover > .nav-dropdown-content {
+    display: block !important;
+}
+
+/* Keep the standalone rule too for any direct usage */
 .nav-dropdown-content {
     display: none;
     position: absolute;
@@ -303,7 +327,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     border-radius: var(--radius);
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     border: 1px solid rgba(255,255,255,0.08);
-    z-index: 1000;
+    z-index: 1100;
     overflow: hidden;
 }
 
@@ -442,8 +466,9 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     }
 
     /* Mobile dropdown: collapsed by default */
+    .nav-menu .nav-dropdown .nav-dropdown-content,
     .nav-dropdown-content {
-        display: none;
+        display: none !important;
         position: static;
         background: rgba(0, 0, 0, 0.25);
         border-radius: 0;
@@ -457,13 +482,15 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     }
 
     /* Desktop hover rule is disabled on mobile by overriding it */
+    .nav-menu .nav-dropdown:hover > .nav-dropdown-content,
     .nav-dropdown:hover > .nav-dropdown-content {
-        display: none;
+        display: none !important;
     }
 
     /* Mobile accordion open state — toggled by JS via .mobile-open class */
+    .nav-menu .nav-dropdown.mobile-open > .nav-dropdown-content,
     .nav-dropdown.mobile-open > .nav-dropdown-content {
-        display: block;
+        display: block !important;
         max-height: 500px;
     }
 
