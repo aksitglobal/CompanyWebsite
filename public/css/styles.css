@@ -1438,82 +1438,8 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
 @media (max-width: 768px) {
     .top-bar { display: none; }
 
-    .hamburger { display: flex; }
-
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 80px 30px 30px;
-        box-shadow: -10px 0 40px rgba(0,0,0,0.15);
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 999;
-        gap: 0;
-    }
-
-    .nav-menu.open { right: 0; }
-
-    .nav-menu a {
-        padding: 14px 0;
-        width: 100%;
-        border-bottom: 1px solid var(--gray-100);
-    }
-
-    .nav-menu a::after { display: none; }
-
-    /* Mobile accordion: nav-dropdown becomes block, no hover */
-    .nav-dropdown {
-        display: block;
-        width: 100%;
-    }
-
-    .nav-dropdown > .nav-dropdown-toggle {
-        width: 100%;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--gray-100);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    /* Cancel desktop hover-open on mobile */
-    .nav-dropdown:hover > .nav-dropdown-content {
-        display: none;
-    }
-
-    /* Mobile: show only when .mobile-open is toggled by JS */
-    .nav-dropdown.mobile-open > .nav-dropdown-content {
-        display: block;
-        position: static;
-        background: var(--off-white);
-        min-width: 0;
-        border-radius: 0 0 var(--radius) var(--radius);
-        box-shadow: none;
-        border: none;
-        border-top: 1px solid var(--gray-200);
-        margin-bottom: 4px;
-    }
-
-    .nav-dropdown.mobile-open > .nav-dropdown-content a {
-        color: var(--gray-700) !important;
-        padding: 10px 16px !important;
-        font-size: 0.88rem !important;
-        border-bottom: 1px solid var(--gray-100);
-    }
-
-    .nav-dropdown.mobile-open > .nav-dropdown-content a:last-child {
-        border-bottom: none;
-    }
-
-    .nav-dropdown.mobile-open > .nav-dropdown-content a:hover {
-        background: var(--gray-100) !important;
-        color: var(--accent) !important;
-    }
+    /* NOTE: navbar mobile styles are handled by the @media (max-width: 1024px)
+       block earlier in this file — do NOT add nav rules here to avoid conflicts. */
 
     .hero { min-height: 500px; }
     .hero h1 { font-size: 2rem; }
@@ -1534,19 +1460,6 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     .section-title h2 { font-size: 1.6rem; }
     .about-stats { grid-template-columns: 1fr; }
     .inquiry-form { padding: 24px; }
-}
-
-/* Overlay for mobile menu */
-.nav-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 998;
-}
-
-.nav-overlay.active {
-    display: block;
 }
 
 /* ============================================================
