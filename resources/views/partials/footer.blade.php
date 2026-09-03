@@ -48,6 +48,10 @@
                     <a href="tel:+923000311868">+92-300-0311868</a>
                 </div>
                 <div class="footer-contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/4571432609" target="_blank">+45 71 43 26 09</a>
+                </div>
+                <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
                     <a href="mailto:contact@aksitglobal.com">contact@aksitglobal.com</a>
                 </div>
