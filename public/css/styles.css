@@ -364,6 +364,136 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* === MOBILE / RESPONSIVE NAV === */
+/* Nav overlay (dark backdrop behind mobile menu) */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+
+    /* Show hamburger button */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Convert nav-menu into a slide-in mobile drawer */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -320px;
+        width: 300px;
+        height: 100vh;
+        background: var(--primary-dark);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 80px 0 40px;
+        z-index: 999;
+        overflow-y: auto;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-menu.open {
+        right: 0;
+    }
+
+    /* All top-level links in mobile menu */
+    .nav-menu > a,
+    .nav-menu > .nav-dropdown > .nav-dropdown-toggle {
+        width: 100%;
+        padding: 14px 28px;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.88) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav-menu > a:hover,
+    .nav-menu > a.active {
+        color: var(--gold) !important;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Underline indicator — off on mobile */
+    .nav-menu > a::after {
+        display: none;
+    }
+
+    /* Dropdown wrapper becomes block-level on mobile */
+    .nav-dropdown {
+        display: block;
+        width: 100%;
+        position: static;
+    }
+
+    /* Mobile dropdown: collapsed by default */
+    .nav-dropdown-content {
+        display: none;
+        position: static;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        min-width: unset;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+    }
+
+    /* Desktop hover rule is disabled on mobile by overriding it */
+    .nav-dropdown:hover > .nav-dropdown-content {
+        display: none;
+    }
+
+    /* Mobile accordion open state — toggled by JS via .mobile-open class */
+    .nav-dropdown.mobile-open > .nav-dropdown-content {
+        display: block;
+        max-height: 500px;
+    }
+
+    .nav-dropdown-content a {
+        padding: 12px 28px 12px 44px !important;
+        font-size: 0.88rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+        white-space: normal;
+    }
+
+    .nav-dropdown-content a:hover {
+        background: rgba(201, 168, 76, 0.15) !important;
+        color: var(--gold) !important;
+    }
+
+    /* Re-show the ::after underline indicator for toggle arrow indication */
+    .nav-dropdown > .nav-dropdown-toggle::after {
+        display: inline-block !important;
+        content: '›';
+        font-size: 1.2rem;
+        transition: transform 0.25s ease;
+        margin-left: auto;
+    }
+
+    .nav-dropdown.mobile-open > .nav-dropdown-toggle::after {
+        transform: rotate(90deg);
+    }
+}
+
 /* === HERO SECTION === */
 .hero {
     position: relative;
