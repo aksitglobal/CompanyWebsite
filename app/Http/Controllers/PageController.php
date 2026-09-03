@@ -73,4 +73,26 @@ class PageController extends Controller
 
         return view('pages.service-detail', compact('slug', 'label', 'contents'));
     }
+
+    // --- Services & Solutions sub-pages ---
+
+    public function networkServices()
+    {
+        return view('pages.network-services');
+    }
+
+    public function systemServices()
+    {
+        return view('pages.system-services');
+    }
+
+    public function networkSolutions()
+    {
+        return view('pages.network-solutions');
+    }
+
+    public function systemSolutions()
+    {
+        return view('pages.system-solutions');
+    }
 }

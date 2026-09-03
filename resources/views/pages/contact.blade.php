@@ -19,8 +19,18 @@
             <div class="contact-cards-grid">
                 <div class="contact-info-card reveal">
                     <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h4>Visit Our Office</h4>
+                    <h4>Pakistan Office</h4>
                     <p>Office# 16-17, 1st Floor, E1 Emporium, Paradise Boulevard, Main GT Rd, near Bahria Paradise Gate, Rawalpindi, Pakistan</p>
+                </div>
+                <div class="contact-info-card reveal">
+                    <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4>Denmark Office</h4>
+                    <p>Aertebjergvej 21, Hvidovre 2650, Denmark</p>
+                </div>
+                <div class="contact-info-card reveal">
+                    <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4>UK Office</h4>
+                    <p>1 Imperial Avenue, Middlesbrough, TS6 6BA, England, United Kingdom</p>
                 </div>
                 <div class="contact-info-card reveal">
                     <div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div>

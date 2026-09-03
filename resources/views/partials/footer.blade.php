@@ -33,7 +33,15 @@
                 <h4>Contact Us</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Office# 16-17, 1st Floor, E1 Emporium, Paradise Boulevard, Main GT Rd, near Bahria Paradise Gate, Rawalpindi, Pakistan</span>
+                    <span><strong>Pakistan:</strong> Office# 16-17, 1st Floor, E1 Emporium, Paradise Boulevard, Main GT Rd, near Bahria Paradise Gate, Rawalpindi, Pakistan</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><strong>Denmark:</strong> Aertebjergvej 21, Hvidovre 2650, Denmark</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><strong>UK:</strong> 1 Imperial Avenue, Middlesbrough, TS6 6BA, England, United Kingdom</span>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-phone-alt"></i>

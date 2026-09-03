@@ -16,12 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('open');
             navOverlay.classList.toggle('active');
             document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+            // Close all mobile dropdowns when menu closes
+            if (!navMenu.classList.contains('open')) {
+                navMenu.querySelectorAll('.nav-dropdown.mobile-open').forEach(d => d.classList.remove('mobile-open'));
+            }
         }
 
         hamburger.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
 
-        navMenu.querySelectorAll('a').forEach(link => {
+        // Mobile accordion for nav dropdowns
+        navMenu.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                // Only apply accordion behavior when mobile menu is open
+                if (!navMenu.classList.contains('open')) return;
+                e.preventDefault();
+                e.stopPropagation();
+                const parentDropdown = toggle.closest('.nav-dropdown');
+                const isOpen = parentDropdown.classList.contains('mobile-open');
+                // Close all other open dropdowns
+                navMenu.querySelectorAll('.nav-dropdown.mobile-open').forEach(d => d.classList.remove('mobile-open'));
+                // Toggle current
+                if (!isOpen) parentDropdown.classList.add('mobile-open');
+            });
+        });
+
+        // Close menu when a real link (inside dropdown-content or plain nav link) is clicked
+        navMenu.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
                 if (navMenu.classList.contains('open')) toggleMenu();
             });

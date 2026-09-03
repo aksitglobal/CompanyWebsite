@@ -37,6 +37,13 @@ Route::get('/fee-structure', [PageController::class, 'feeStructure'])->name('fee
 Route::get('/class-schedule', [PageController::class, 'classSchedule'])->name('class-schedule');
 Route::get('/solutions/{slug}', [PageController::class, 'servicePage'])->name('service.page');
 
+// Services & Solutions sub-pages
+Route::get('/network-services', [PageController::class, 'networkServices'])->name('network-services');
+Route::get('/system-services', [PageController::class, 'systemServices'])->name('system-services');
+Route::get('/network-solutions', [PageController::class, 'networkSolutions'])->name('network-solutions');
+Route::get('/system-solutions', [PageController::class, 'systemSolutions'])->name('system-solutions');
+
+
 // Form Submission Routes
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
 Route::post('/enrollment', [FormController::class, 'submitEnrollment'])->name('enrollment.submit');
